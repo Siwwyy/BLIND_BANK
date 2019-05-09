@@ -155,7 +155,7 @@ namespace BLINDBANK {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(549, 59);
+			this->button2->Location = System::Drawing::Point(317, 251);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 15;
