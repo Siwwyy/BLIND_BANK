@@ -3,7 +3,7 @@
 #include "Admin_Form.h"
 #include "Student_Form.h"
 #include "Wykladowca_Form.h"
-
+#include "Configure_String.hpp"
 
 namespace BLINDBANK {
 
@@ -374,10 +374,12 @@ namespace BLINDBANK {
 	private: System::Void btnZaloguj_Click_1(System::Object^  sender, System::EventArgs^  e) 
 	{
 		//Here add mysql reader
-		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=blind_bank_db";
+		//String^ konfiguracja = L"datasource=81.171.31.230;port=3306;username=blindbankdb;password=Qwerty123;database=blindbank_db";
+		//String^ konfiguracja = L"datasource=81.171.31.230;port=3306;username=blindbankdb@127.0.0.1;password=Qwerty123;database=blindbank_db";
+		//String^ konfiguracja = L"datasource=remotemysql.com;port=3306;username=aUy3ZvnM7k;password=wUMpRMvSyN;database=aUy3ZvnM7k";
 		//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=gabinet";
 
-		MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
 		//here for us we will be selecting the role, for example if role == "Administrator" open the administrator form
 		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id FROM uzytkownik WHERE uzytkownik_nazwa = '" + txtIndex->Text + "' AND haslo = PASSWORD('" + txtHaslo->Text + "');", laczbaze);
 		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT rola_idrola FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "' AND Haslo_Uzytkownika = '" + txtHaslo->Text + "';", laczbaze);
@@ -454,10 +456,10 @@ namespace BLINDBANK {
 	private: System::Void btnZMIENHASLO_Click(System::Object^  sender, System::EventArgs^  e)
 	{
 		//Here add mysql reader
-		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=blind_bank_db";
+		//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=blind_bank_db";
 		//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=gabinet";
 
-		MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
 		MySqlCommand^ polecenie = laczbaze->CreateCommand();
 		MySqlTransaction^ transakcja;
 

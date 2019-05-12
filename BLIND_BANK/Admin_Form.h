@@ -1,6 +1,7 @@
 #pragma once
 //#include "Logowanie.h"
 //#include "../BLIND_BANK/Logowanie.cpp"
+#include "Configure_String.hpp"
 
 namespace BLINDBANK {
 
@@ -67,7 +68,7 @@ namespace BLINDBANK {
 			PRIVATE VARIABLES
 		*/
 		//Here add mysql reader
-		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=blind_bank_db";
+		String^ konfiguracja = SQL_CONFIGURATION::get_konfiguracja();
 		//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=gabinet";
 		int role;
 		String^ Admin_Name;
@@ -1311,7 +1312,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 	*/
 	private: void pokaz_uzytkownikow(System::Windows::Forms::DataGridView^ siatka)
 	{
-		MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
 		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika as Imie, Nazwisko_Uzytkownika as Nazwisko , Unique_Index_Number as Numer Indexu, Email_Uzytkownika as E-mail, Haslo_Uzytkownika as Haslo, rola_idrola as Rola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
 		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika, Nazwisko_Uzytkownika, Unique_Index_Number, Email_Uzytkownika, Haslo_Uzytkownika , rola_idrola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
 		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);

@@ -146,6 +146,7 @@
     <ClInclude Include="Admin_Form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="Configure_String.hpp" />
     <ClInclude Include="Logowanie.h">
       <FileType>CppForm</FileType>
     </ClInclude>
