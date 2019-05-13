@@ -1315,7 +1315,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
 		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika as Imie, Nazwisko_Uzytkownika as Nazwisko , Unique_Index_Number as Numer Indexu, Email_Uzytkownika as E-mail, Haslo_Uzytkownika as Haslo, rola_idrola as Rola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
 		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika, Nazwisko_Uzytkownika, Unique_Index_Number, Email_Uzytkownika, Haslo_Uzytkownika , rola_idrola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
 
 		try {
 
@@ -1342,7 +1342,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 	private: void pokaz_grupy(System::Windows::Forms::DataGridView^ siatka)
 	{
 		MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM blind_bank_db.grupy WHERE idgrupy > 1;", laczbaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM grupy WHERE idgrupy > 1;", laczbaze);
 
 		try {
 
@@ -1370,7 +1370,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 	private: void pokaz_okreslonego_uzytkownika(System::Windows::Forms::DataGridView^ siatka, const int id_rekordu_uzytkownika)
 	{
 		MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `blind_bank_db`.`uzytkownicy` WHERE iduzytkownicy = '" + id_rekordu_uzytkownika +"'", laczbaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM uzytkownicy WHERE iduzytkownicy = '" + id_rekordu_uzytkownika +"'", laczbaze);
 
 		try {
 
@@ -1395,7 +1395,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 	private: void pokaz_okreslona_grupe_uzytkownikow(System::Windows::Forms::DataGridView^ siatka, const int rola_idrola)
 	{
 		MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `blind_bank_db`.`uzytkownicy` WHERE `rola_idrola` = '" + rola_idrola + "'", laczbaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM uzytkownicy WHERE rola_idrola = '" + rola_idrola + "'", laczbaze);
 
 		try {
 
@@ -1489,7 +1489,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 					if (checkboxWYKLADOWCA->Checked == true)
 					{
 						//polecenie->CommandText = "INSERT INTO uzytkownicy SET Imie_Uzytkownika = '" + txtIMIE->Text + "' , Nazwisko_Uzytkownika = '" + txtNAZWISKO->Text + "' , Unique_Index_Number = '" + txtNUMERINDEXU->Text + "', Email_Uzytkownika = '" + txtEMAIL->Text + "', Haslo_Uzytkownika = '" + txtHASLO->Text + "', rola_idrola = '" + txtHASLO->Text + "';";
-						polecenie->CommandText = "INSERT INTO `blind_bank_db`.`uzytkownicy` (`Imie_Uzytkownika`, `Nazwisko_Uzytkownika`, `Unique_Index_Number`, `Email_Uzytkownika`, `Haslo_Uzytkownika`, `rola_idrola`) VALUES ('" + txtIMIE->Text + "',  '" + txtNAZWISKO->Text + "', '" + txtNUMERINDEXU->Text + "', '" + txtEMAIL->Text + "', '" + txtHASLO->Text + "', '2');";
+						polecenie->CommandText = "INSERT INTO uzytkownicy (`Imie_Uzytkownika`, `Nazwisko_Uzytkownika`, `Unique_Index_Number`, `Email_Uzytkownika`, `Haslo_Uzytkownika`, `rola_idrola`) VALUES ('" + txtIMIE->Text + "',  '" + txtNAZWISKO->Text + "', '" + txtNUMERINDEXU->Text + "', '" + txtEMAIL->Text + "', '" + txtHASLO->Text + "', '2');";
 						polecenie->ExecuteNonQuery();
 
 						transakcja->Commit();
@@ -1497,7 +1497,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 					}
 					else if (checkboxSTUDENT->Checked == true)
 					{
-						polecenie->CommandText = "INSERT INTO `blind_bank_db`.`uzytkownicy` (`Imie_Uzytkownika`, `Nazwisko_Uzytkownika`, `Unique_Index_Number`, `Email_Uzytkownika`, `Haslo_Uzytkownika`, `rola_idrola`) VALUES ('" + txtIMIE->Text + "',  '" + txtNAZWISKO->Text + "', '" + txtNUMERINDEXU->Text + "', '" + txtEMAIL->Text + "', '" + txtHASLO->Text + "', '3');";
+						polecenie->CommandText = "INSERT INTO uzytkownicy (`Imie_Uzytkownika`, `Nazwisko_Uzytkownika`, `Unique_Index_Number`, `Email_Uzytkownika`, `Haslo_Uzytkownika`, `rola_idrola`) VALUES ('" + txtIMIE->Text + "',  '" + txtNAZWISKO->Text + "', '" + txtNUMERINDEXU->Text + "', '" + txtEMAIL->Text + "', '" + txtHASLO->Text + "', '3');";
 						polecenie->ExecuteNonQuery();
 
 						transakcja->Commit();
@@ -1584,7 +1584,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			{
 				if (checkboxWYKLADOWCAMOD->Checked == true)
 				{
-					polecenie->CommandText = "UPDATE `blind_bank_db`.`uzytkownicy` SET `Imie_Uzytkownika` = '" + txtIMIEMOD->Text + "', `Nazwisko_Uzytkownika` = '" + txtNAZWISKOMOD->Text + "', `Unique_Index_Number` = '" + txtNUMERINDEXUMOD->Text + "', `Email_Uzytkownika` = '" + txtEMAILMOD->Text + "', `Haslo_Uzytkownika` = '" + txtHASLOMOD->Text + "', `rola_idrola` = '2' WHERE `iduzytkownicy` = '" + id_rekordu + "';";
+					polecenie->CommandText = "UPDATE uzytkownicy SET `Imie_Uzytkownika` = '" + txtIMIEMOD->Text + "', `Nazwisko_Uzytkownika` = '" + txtNAZWISKOMOD->Text + "', `Unique_Index_Number` = '" + txtNUMERINDEXUMOD->Text + "', `Email_Uzytkownika` = '" + txtEMAILMOD->Text + "', `Haslo_Uzytkownika` = '" + txtHASLOMOD->Text + "', `rola_idrola` = '2' WHERE `iduzytkownicy` = '" + id_rekordu + "';";
 					polecenie->ExecuteNonQuery();
 
 					transakcja->Commit();
@@ -1592,7 +1592,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 				}
 				else if (checkboxSTUDENTMOD->Checked == true)
 				{
-					polecenie->CommandText = "UPDATE `blind_bank_db`.`uzytkownicy` SET `Imie_Uzytkownika` = '" + txtIMIEMOD->Text + "', `Nazwisko_Uzytkownika` = '" + txtNAZWISKOMOD->Text + "', `Unique_Index_Number` = '" + txtNUMERINDEXUMOD->Text + "', `Email_Uzytkownika` = '" + txtEMAILMOD->Text + "', `Haslo_Uzytkownika` = '" + txtHASLOMOD->Text + "', `rola_idrola` = '3' WHERE `iduzytkownicy` = '" + id_rekordu + "';";
+					polecenie->CommandText = "UPDATE uzytkownicy SET `Imie_Uzytkownika` = '" + txtIMIEMOD->Text + "', `Nazwisko_Uzytkownika` = '" + txtNAZWISKOMOD->Text + "', `Unique_Index_Number` = '" + txtNUMERINDEXUMOD->Text + "', `Email_Uzytkownika` = '" + txtEMAILMOD->Text + "', `Haslo_Uzytkownika` = '" + txtHASLOMOD->Text + "', `rola_idrola` = '3' WHERE `iduzytkownicy` = '" + id_rekordu + "';";
 					polecenie->ExecuteNonQuery();
 
 					transakcja->Commit();
@@ -1639,7 +1639,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			{
 				if (MessageBox::Show("Czy usunac Uzytkownika: " + dgUSUNUZYTKOWNIKA->Rows[row]->Cells["Imie_Uzytkownika"]->Value->ToString() + " " + dgUSUNUZYTKOWNIKA->Rows[row]->Cells["Nazwisko_Uzytkownika"]->Value->ToString() + "?", " Ostrzezenie!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes)
 				{
-					polecenie->CommandText = "DELETE FROM `blind_bank_db`.`uzytkownicy` WHERE `iduzytkownicy`='" + id_rekordu + "';";
+					polecenie->CommandText = "DELETE FROM uzytkownicy WHERE `iduzytkownicy`='" + id_rekordu + "';";
 					polecenie->ExecuteNonQuery();
 
 					transakcja->Commit();
@@ -1726,7 +1726,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 					//polecenie->CommandText = "INSERT INTO `blind_bank_db`.`uzytkownicy` (`Imie_Uzytkownika`, `Nazwisko_Uzytkownika`, `Unique_Index_Number`, `Email_Uzytkownika`, `Haslo_Uzytkownika`, `rola_idrola`, `grupy_idgrupy`) VALUES ('" + txtIMIE->Text + "',  '" + txtNAZWISKO->Text + "', '" + txtNUMERINDEXU->Text + "', '" + txtEMAIL->Text + "', '" + txtHASLO->Text + "', '2', '1');";
 				//	polecenie->CommandText = "UPDATE `blind_bank_db`.`uzytkownicy` SET `grupy_idgrupy` = '" + id_grupy + "' WHERE `iduzytkownicy` = '" + id_rekordu + "';";
 					//polecenie->CommandText = "INSERT INTO `blind_bank_db`.`uzytkownicy` (`grupy_idgrupy`) VALUES ('" + id_grupy + "') WHERE `iduzytkownicy` = '" + id_rekordu + "';";
-					polecenie->CommandText = "INSERT INTO `blind_bank_db`.`grupy_uzytkownikow` (`iduzytkownika`, `idgrupy`, `Numer_Indexu_uzytkownika`, `Numer_Grupy`, `Informacje`) VALUES ('" + id_rekordu + "','" + id_grupy + "', (SELECT Unique_Index_Number FROM blind_bank_db.uzytkownicy WHERE iduzytkownicy = "+ id_rekordu +"), (SELECT Numer_Grupy FROM blind_bank_db.grupy WHERE idgrupy = "+ id_grupy +") ,(SELECT Informacje FROM blind_bank_db.grupy WHERE idgrupy = " + id_grupy + "));";
+					polecenie->CommandText = "INSERT INTO grupy_uzytkownikow (`iduzytkownika`, `idgrupy`, `Numer_Indexu_uzytkownika`, `Numer_Grupy`, `Informacje`) VALUES ('" + id_rekordu + "','" + id_grupy + "', (SELECT Unique_Index_Number FROM blind_bank_db.uzytkownicy WHERE iduzytkownicy = "+ id_rekordu +"), (SELECT Numer_Grupy FROM blind_bank_db.grupy WHERE idgrupy = "+ id_grupy +") ,(SELECT Informacje FROM blind_bank_db.grupy WHERE idgrupy = " + id_grupy + "));";
 					polecenie->ExecuteNonQuery();
 					transakcja->Commit();
 					MessageBox::Show("Uzytkownik wlasnie zostal dodany do grupy!!", "Uwaga!", MessageBoxButtons::OK, MessageBoxIcon::Question);
@@ -1809,7 +1809,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 				if (MessageBox::Show("Czy dodac grupe: " + txtNAZWAGRUPYZARZADZANIE->Text + " " + txtINFORMACJEZARZADZANIE->Text + " ?", " Ostrzezenie!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes)
 				{
 					//INSERT INTO `blind_bank_db`.`grupy` (`Numer_Grupy`, `Informacje`) VALUES ('2', 'Rok Akademicki 2016/2017');
-					polecenie->CommandText = "INSERT INTO `blind_bank_db`.`grupy` (`Numer_Grupy`, `Informacje`) VALUES ( '"+ txtNAZWAGRUPYZARZADZANIE->Text +"', '"+ txtINFORMACJEZARZADZANIE->Text +"')";
+					polecenie->CommandText = "INSERT INTO grupy (`Numer_Grupy`, `Informacje`) VALUES ( '"+ txtNAZWAGRUPYZARZADZANIE->Text +"', '"+ txtINFORMACJEZARZADZANIE->Text +"')";
 					polecenie->ExecuteNonQuery();
 
 					transakcja->Commit();
@@ -1847,7 +1847,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 
 			try
 			{
-				polecenie->CommandText = "UPDATE `blind_bank_db`.`grupy` SET `Numer_Grupy` = '" + txtNAZWAGRUPYZARZADZANIE->Text + "' , `Informacje` = '" + txtINFORMACJEZARZADZANIE->Text + "' WHERE `idgrupy` = '" + id_grupy_2 + "';";
+				polecenie->CommandText = "UPDATE grupy SET `Numer_Grupy` = '" + txtNAZWAGRUPYZARZADZANIE->Text + "' , `Informacje` = '" + txtINFORMACJEZARZADZANIE->Text + "' WHERE `idgrupy` = '" + id_grupy_2 + "';";
 				polecenie->ExecuteNonQuery();
 				transakcja->Commit();
 				MessageBox::Show("Grupa zostala poprawnie zmodyfikowana!", "Uwaga!", MessageBoxButtons::OK, MessageBoxIcon::Question);
@@ -1885,7 +1885,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			{
 				if (MessageBox::Show("Czy usunac Grupe: " + dgZARZADZENIEGRUPA->Rows[row]->Cells["Numer_Grupy"]->Value->ToString() + " " + dgZARZADZENIEGRUPA->Rows[row]->Cells["Informacje"]->Value->ToString() + " ?", " Ostrzezenie!!", MessageBoxButtons::YesNo, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::Yes)
 				{
-					polecenie->CommandText = "DELETE FROM `blind_bank_db`.`grupy` WHERE `idgrupy`= '" + id_grupy_2 + "';";
+					polecenie->CommandText = "DELETE FROM grupy WHERE `idgrupy`= '" + id_grupy_2 + "';";
 					polecenie->ExecuteNonQuery();
 					transakcja->Commit();
 					/*polecenie->CommandText = "DELETE FROM `blind_bank_db`.`grupy_uzytkownikow` WHERE `idgrupy` = '" + id_grupy_2 + "';";	//IMPORTANT
@@ -1911,7 +1911,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 		{
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM blind_bank_db.grupy WHERE idgrupy = (SELECT idgrupy FROM blind_bank_db.grupy_uzytkownikow WHERE iduzytkownika = '"+ id_rekordu +"');", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM  blind_bank_db.grupy_uzytkownikow WHERE iduzytkownika = '"+ id_rekordu +"';", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM grupy_uzytkownikow WHERE iduzytkownika = '"+ id_rekordu +"';", laczbaze);
 
 			try {
 

@@ -1,5 +1,6 @@
 #pragma once
 //#include "Logowanie.h"
+#include "Configure_String.hpp"
 
 namespace BLINDBANK {
 
@@ -62,7 +63,8 @@ namespace BLINDBANK {
 			PRIVATE VARIABLES
 		*/
 		//Here add mysql reader
-		String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=blind_bank_db";
+		String^ konfiguracja = SQL_CONFIGURATION::get_konfiguracja();
+		//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=blind_bank_db";
 	//	String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=gabinet";
 		int role;
 		String^ Admin_Name;
