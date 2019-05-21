@@ -176,7 +176,7 @@ namespace BLINDBANK {
 			this->txtHaslo->PasswordChar = '*';
 			this->txtHaslo->Size = System::Drawing::Size(367, 38);
 			this->txtHaslo->TabIndex = 9;
-			this->txtHaslo->Text = L"zaq1@WSX";
+			this->txtHaslo->Text = L"1234";
 			// 
 			// txtIndex
 			// 
@@ -186,7 +186,7 @@ namespace BLINDBANK {
 			this->txtIndex->Name = L"txtIndex";
 			this->txtIndex->Size = System::Drawing::Size(367, 38);
 			this->txtIndex->TabIndex = 8;
-			this->txtIndex->Text = L"andrydamian@gmail.com";
+			this->txtIndex->Text = L"kacper@gmail.com";
 			// 
 			// button2
 			// 
@@ -415,11 +415,17 @@ namespace BLINDBANK {
 
 					MySqlCommand^ zapytanie_admin_name = gcnew MySqlCommand("SELECT Imie_Uzytkownika FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
 					odczytanie = zapytanie_admin_name->ExecuteReader();
+					
 					if (odczytanie->Read())
 					{
 						String^ Admin_Name = odczytanie->GetString(0);
 						this->Visible = false;
-						Wykladowca_Form^ program = gcnew Wykladowca_Form(id_rola, Admin_Name,this);
+						odczytanie->Close();
+						zapytanie_admin_name = gcnew MySqlCommand("SELECT iduzytkownicy FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
+						odczytanie = zapytanie_admin_name->ExecuteReader();
+						odczytanie->Read();
+						int id = odczytanie->GetInt32(0);
+						Wykladowca_Form^ program = gcnew Wykladowca_Form(id_rola, Admin_Name,id,this);
 						program->ShowDialog();
 						
 					}

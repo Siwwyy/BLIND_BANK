@@ -37,7 +37,18 @@ namespace BLINDBANK {
 		Wykladowca_Form(const int role, String^ & Admin_Name, System::Windows::Forms::Form ^ _Form) :
 			role(role),
 			Admin_Name(Admin_Name),
-			Logowanie_Form(_Form)
+			Logowanie_Form(_Form),
+			id_wykladowca(0)
+		{
+			InitializeComponent();
+
+		}
+
+		Wykladowca_Form(const int role, String^ & Admin_Name,int a, System::Windows::Forms::Form ^ _Form) :
+			role(role),
+			Admin_Name(Admin_Name),
+			Logowanie_Form(_Form),
+			id_wykladowca(a)
 		{
 			InitializeComponent();
 
@@ -68,13 +79,96 @@ namespace BLINDBANK {
 		int role;
 		String^ Admin_Name;
 		System::Windows::Forms::Form ^ Logowanie_Form;
+		int id_wykladowca;
 
 
 
 	private: System::Windows::Forms::DateTimePicker^  dateTimePicker1;
 	private: System::Windows::Forms::Button^  btnWYLOGUJ;
-	private: System::Windows::Forms::Button^  button1;
-	private: System::Windows::Forms::Button^  button2;
+	private: System::Windows::Forms::TabControl^  tabControl1;
+	private: System::Windows::Forms::TabPage^  Grupy;
+	private: System::Windows::Forms::TabPage^  PraceDomowe;
+	private: System::Windows::Forms::TabPage^  Profil;
+	private: System::Windows::Forms::Button^  btnPOKAZGRUPYGRUPY;
+	private: System::Windows::Forms::DataGridView^  dgPOKAZGRUPYGRUPY;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 			 /// <summary>
@@ -93,8 +187,15 @@ namespace BLINDBANK {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->btnWYLOGUJ = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->tabControl1 = (gcnew System::Windows::Forms::TabControl());
+			this->Grupy = (gcnew System::Windows::Forms::TabPage());
+			this->dgPOKAZGRUPYGRUPY = (gcnew System::Windows::Forms::DataGridView());
+			this->btnPOKAZGRUPYGRUPY = (gcnew System::Windows::Forms::Button());
+			this->PraceDomowe = (gcnew System::Windows::Forms::TabPage());
+			this->Profil = (gcnew System::Windows::Forms::TabPage());
+			this->tabControl1->SuspendLayout();
+			this->Grupy->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPOKAZGRUPYGRUPY))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// lblAdmin
@@ -127,7 +228,7 @@ namespace BLINDBANK {
 			this->dateTimePicker1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker1->Location = System::Drawing::Point(819, 9);
+			this->dateTimePicker1->Location = System::Drawing::Point(919, 6);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
 			this->dateTimePicker1->Size = System::Drawing::Size(151, 26);
 			this->dateTimePicker1->TabIndex = 7;
@@ -137,7 +238,7 @@ namespace BLINDBANK {
 			// 
 			this->btnWYLOGUJ->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnWYLOGUJ->Location = System::Drawing::Point(672, 7);
+			this->btnWYLOGUJ->Location = System::Drawing::Point(772, 4);
 			this->btnWYLOGUJ->Name = L"btnWYLOGUJ";
 			this->btnWYLOGUJ->Size = System::Drawing::Size(141, 31);
 			this->btnWYLOGUJ->TabIndex = 13;
@@ -145,32 +246,77 @@ namespace BLINDBANK {
 			this->btnWYLOGUJ->UseVisualStyleBackColor = true;
 			this->btnWYLOGUJ->Click += gcnew System::EventHandler(this, &Wykladowca_Form::btnWYLOGUJ_Click);
 			// 
-			// button1
+			// tabControl1
 			// 
-			this->button1->Location = System::Drawing::Point(445, 260);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(75, 23);
-			this->button1->TabIndex = 14;
-			this->button1->Text = L"button1";
-			this->button1->UseVisualStyleBackColor = true;
-			this->button1->Click += gcnew System::EventHandler(this, &Wykladowca_Form::button1_Click);
+			this->tabControl1->Controls->Add(this->Grupy);
+			this->tabControl1->Controls->Add(this->PraceDomowe);
+			this->tabControl1->Controls->Add(this->Profil);
+			this->tabControl1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
+			this->tabControl1->Location = System::Drawing::Point(12, 41);
+			this->tabControl1->Name = L"tabControl1";
+			this->tabControl1->SelectedIndex = 0;
+			this->tabControl1->Size = System::Drawing::Size(1058, 707);
+			this->tabControl1->TabIndex = 14;
 			// 
-			// button2
+			// Grupy
 			// 
-			this->button2->Location = System::Drawing::Point(317, 251);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(75, 23);
-			this->button2->TabIndex = 15;
-			this->button2->Text = L"button2";
-			this->button2->UseVisualStyleBackColor = true;
+			this->Grupy->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->Grupy->Controls->Add(this->dgPOKAZGRUPYGRUPY);
+			this->Grupy->Controls->Add(this->btnPOKAZGRUPYGRUPY);
+			this->Grupy->Location = System::Drawing::Point(4, 29);
+			this->Grupy->Name = L"Grupy";
+			this->Grupy->Padding = System::Windows::Forms::Padding(3);
+			this->Grupy->Size = System::Drawing::Size(1050, 674);
+			this->Grupy->TabIndex = 0;
+			this->Grupy->Text = L"Grupy";
+			// 
+			// dgPOKAZGRUPYGRUPY
+			// 
+			this->dgPOKAZGRUPYGRUPY->AllowUserToAddRows = false;
+			this->dgPOKAZGRUPYGRUPY->AllowUserToDeleteRows = false;
+			this->dgPOKAZGRUPYGRUPY->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgPOKAZGRUPYGRUPY->Location = System::Drawing::Point(6, 6);
+			this->dgPOKAZGRUPYGRUPY->Name = L"dgPOKAZGRUPYGRUPY";
+			this->dgPOKAZGRUPYGRUPY->ReadOnly = true;
+			this->dgPOKAZGRUPYGRUPY->RowTemplate->Height = 24;
+			this->dgPOKAZGRUPYGRUPY->Size = System::Drawing::Size(1038, 342);
+			this->dgPOKAZGRUPYGRUPY->TabIndex = 1;
+			// 
+			// btnPOKAZGRUPYGRUPY
+			// 
+			this->btnPOKAZGRUPYGRUPY->Location = System::Drawing::Point(45, 527);
+			this->btnPOKAZGRUPYGRUPY->Name = L"btnPOKAZGRUPYGRUPY";
+			this->btnPOKAZGRUPYGRUPY->Size = System::Drawing::Size(156, 72);
+			this->btnPOKAZGRUPYGRUPY->TabIndex = 0;
+			this->btnPOKAZGRUPYGRUPY->Text = L"Pokaz Grupy";
+			this->btnPOKAZGRUPYGRUPY->UseVisualStyleBackColor = true;
+			this->btnPOKAZGRUPYGRUPY->Click += gcnew System::EventHandler(this, &Wykladowca_Form::btnPOKAZGRUPYGRUPY_Click);
+			// 
+			// PraceDomowe
+			// 
+			this->PraceDomowe->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->PraceDomowe->Location = System::Drawing::Point(4, 29);
+			this->PraceDomowe->Name = L"PraceDomowe";
+			this->PraceDomowe->Padding = System::Windows::Forms::Padding(3);
+			this->PraceDomowe->Size = System::Drawing::Size(1050, 674);
+			this->PraceDomowe->TabIndex = 1;
+			this->PraceDomowe->Text = L"Prace domowe";
+			// 
+			// Profil
+			// 
+			this->Profil->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->Profil->Location = System::Drawing::Point(4, 29);
+			this->Profil->Name = L"Profil";
+			this->Profil->Size = System::Drawing::Size(1050, 674);
+			this->Profil->TabIndex = 2;
+			this->Profil->Text = L"Profil";
 			// 
 			// Wykladowca_Form
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(982, 653);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->ClientSize = System::Drawing::Size(1082, 753);
+			this->Controls->Add(this->tabControl1);
 			this->Controls->Add(this->btnWYLOGUJ);
 			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->lblAdmin);
@@ -181,14 +327,54 @@ namespace BLINDBANK {
 			this->Name = L"Wykladowca_Form";
 			this->Text = L"Wykladowca";
 			this->Load += gcnew System::EventHandler(this, &Wykladowca_Form::Wykladowca_Form_Load);
+			this->tabControl1->ResumeLayout(false);
+			this->Grupy->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPOKAZGRUPYGRUPY))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+	/*
+		OWN FUNCTIONS
+	*/
+	private: void pokaz_uzytkownikow(System::Windows::Forms::DataGridView^ siatka)
+	{
+		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika as Imie, Nazwisko_Uzytkownika as Nazwisko , Unique_Index_Number as Numer Indexu, Email_Uzytkownika as E-mail, Haslo_Uzytkownika as Haslo, rola_idrola as Rola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
+		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika, Nazwisko_Uzytkownika, Unique_Index_Number, Email_Uzytkownika, Haslo_Uzytkownika , rola_idrola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Numer_Grupy , Informacje FROM grupy WHERE  idgrupy in (SELECT  idgrupy FROM grupy_uzytkownikow WHERE iduzytkownika='" + this->id_wykladowca + "');", laczbaze);
+
+		try {
+
+			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+			moja->SelectCommand = zapytanie;
+
+			DataTable^ tabela = gcnew DataTable();
+			moja->Fill(tabela);
+
+			BindingSource^ zrodlo = gcnew BindingSource();
+			zrodlo->DataSource = tabela;
+			siatka->DataSource = zrodlo;
+
+			laczbaze->Close();
+		}
+		catch (Exception^ komunikat)
+		{
+			MessageBox::Show(komunikat->Message);
+		}
+		//siatka->Columns[0]->Visible = false;
+	//	siatka->Columns[7]->Visible = false;
+	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 	private: System::Void Wykladowca_Form_Load(System::Object^  sender, System::EventArgs^  e)
 	{
 		this->lblAdmin->Text = this->Admin_Name;
+		pokaz_uzytkownikow(dgPOKAZGRUPYGRUPY);
 	}
 
 
@@ -201,7 +387,11 @@ namespace BLINDBANK {
 			Logowanie_Form->Visible = true;
 		}
 	}
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-}
+
+	private: System::Void btnPOKAZGRUPYGRUPY_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+		//pokaz_uzytkownikow(dgPOKAZGRUPYGRUPY);
+	}
+
 };
 }
