@@ -450,6 +450,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			this->dgUzytkownicy->Size = System::Drawing::Size(1004, 550);
 			this->dgUzytkownicy->TabIndex = 11;
 			this->dgUzytkownicy->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Admin_Form::dgUzytkownicy_CellClick);
+			this->dgUzytkownicy->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Admin_Form::dgUzytkownicy_CellContentClick);
 			// 
 			// btnPokazUzytkownikow
 			// 
@@ -1944,5 +1945,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 		}
 	}
 
+private: System::Void dgUzytkownicy_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+}
 };
 }
