@@ -26,27 +26,18 @@ namespace BLINDBANK {
 		{
 			try
 			{
-				//Pass the file path and file name to the StreamReader constructor.
 				StreamReader^ reader = gcnew StreamReader(this->file_path);
 				System::String^ line = "";
-				//Read the first line of text.
 				line = reader->ReadLine();
 				from_file += line;
 				from_file += '\n';
-				//Continue to read until you reach end of file.
 				while (line != "" && reader->EndOfStream != true)
 				{
 					line = reader->ReadLine();
 					from_file += line;
 					from_file += '\n';
-					//Write the lie to console window.
-					//Console::WriteLine(line);
-					//Read the next line.
 				}
-				
-				//Close the file.
 				reader->Close();
-				//Console::ReadLine();
 			}
 			catch (Exception^ e)
 			{
