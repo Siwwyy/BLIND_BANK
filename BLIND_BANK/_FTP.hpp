@@ -31,17 +31,17 @@ namespace BLINDBANK {
 				System::String^ line = "";
 				//Read the first line of text.
 				line = reader->ReadLine();
-
+				from_file += line;
 				//Continue to read until you reach end of file.
-				while (line != "")
+				while (line != "" && reader->EndOfStream != true)
 				{
+					line = reader->ReadLine();
 					from_file += line;
 					//Write the lie to console window.
 					//Console::WriteLine(line);
 					//Read the next line.
-					line = reader->ReadLine();
 				}
-
+				
 				//Close the file.
 				reader->Close();
 				//Console::ReadLine();
@@ -63,7 +63,7 @@ namespace BLINDBANK {
 			file_path(file_path),
 			from_file("")
 		{
-			
+			read_file();
 		}
 
 
@@ -72,7 +72,7 @@ namespace BLINDBANK {
 			return from_file;
 		}
 
-		~_FTP() { from_file = " "; }
+		~_FTP() { from_file = " "; file_path = ""; }
 	};
 }
 

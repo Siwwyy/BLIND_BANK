@@ -2,6 +2,7 @@
 //#include "Logowanie.h"
 //#include "../BLIND_BANK/Logowanie.cpp"
 #include "Configure_String.hpp"
+#include "_FTP.hpp"
 
 namespace BLINDBANK {
 
@@ -12,6 +13,7 @@ namespace BLINDBANK {
 	using namespace System::Data;
 	using namespace System::Drawing;
 	using namespace MySql::Data::MySqlClient;
+	using namespace System::IO;
 
 	/// <summary>
 	/// Summary for Admin_Form
@@ -209,6 +211,12 @@ private: System::Windows::Forms::Label^  label19;
 private: System::Windows::Forms::TextBox^  txtINFORMACJEZARZADZANIE;
 private: System::Windows::Forms::Button^  btnMODYFIKUJGRUPE;
 private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
+private: System::Windows::Forms::TabPage^  tabPage7;
+private: System::Windows::Forms::RichTextBox^  richtest;
+
+private: System::Windows::Forms::Button^  button1;
+private: System::Windows::Forms::OpenFileDialog^  openFileDialog1;
+
 
 
 
@@ -337,7 +345,11 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			this->btnMODYFIKUJGRUPE = (gcnew System::Windows::Forms::Button());
 			this->label17 = (gcnew System::Windows::Forms::Label());
 			this->dgZARZADZENIEGRUPA = (gcnew System::Windows::Forms::DataGridView());
+			this->tabPage7 = (gcnew System::Windows::Forms::TabPage());
+			this->richtest = (gcnew System::Windows::Forms::RichTextBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->btnWYLOGUJ = (gcnew System::Windows::Forms::Button());
+			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgUzytkownicy))->BeginInit();
@@ -357,6 +369,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			this->tabPage6->SuspendLayout();
 			this->groupBox4->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgZARZADZENIEGRUPA))->BeginInit();
+			this->tabPage7->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -404,6 +417,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			this->tabControl1->Controls->Add(this->tabPage5);
 			this->tabControl1->Controls->Add(this->tabPage4);
 			this->tabControl1->Controls->Add(this->tabPage6);
+			this->tabControl1->Controls->Add(this->tabPage7);
 			this->tabControl1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->tabControl1->Location = System::Drawing::Point(12, 41);
@@ -1239,6 +1253,36 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			this->dgZARZADZENIEGRUPA->TabIndex = 1;
 			this->dgZARZADZENIEGRUPA->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Admin_Form::dgZARZADZENIEGRUPA_CellClick);
 			// 
+			// tabPage7
+			// 
+			this->tabPage7->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->tabPage7->Controls->Add(this->richtest);
+			this->tabPage7->Controls->Add(this->button1);
+			this->tabPage7->Location = System::Drawing::Point(4, 29);
+			this->tabPage7->Name = L"tabPage7";
+			this->tabPage7->Padding = System::Windows::Forms::Padding(3);
+			this->tabPage7->Size = System::Drawing::Size(1050, 674);
+			this->tabPage7->TabIndex = 7;
+			this->tabPage7->Text = L"tabPage7";
+			// 
+			// richtest
+			// 
+			this->richtest->Location = System::Drawing::Point(45, 22);
+			this->richtest->Name = L"richtest";
+			this->richtest->Size = System::Drawing::Size(883, 496);
+			this->richtest->TabIndex = 1;
+			this->richtest->Text = L"";
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(422, 592);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(144, 54);
+			this->button1->TabIndex = 0;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Admin_Form::button1_Click);
+			// 
 			// btnWYLOGUJ
 			// 
 			this->btnWYLOGUJ->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -1250,6 +1294,10 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			this->btnWYLOGUJ->Text = L"Wyloguj";
 			this->btnWYLOGUJ->UseVisualStyleBackColor = true;
 			this->btnWYLOGUJ->Click += gcnew System::EventHandler(this, &Admin_Form::btnWYLOGUJ_Click);
+			// 
+			// openFileDialog1
+			// 
+			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
 			// Admin_Form
 			// 
@@ -1295,6 +1343,7 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 			this->groupBox4->ResumeLayout(false);
 			this->groupBox4->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgZARZADZENIEGRUPA))->EndInit();
+			this->tabPage7->ResumeLayout(false);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -1947,5 +1996,30 @@ private: System::Windows::Forms::Button^  btnPOKAZGRUPYUZYTKOWNIKA;
 
 private: System::Void dgUzytkownicy_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 }
+private: System::Void fileSystemWatcher1_Changed(System::Object^  sender, System::IO::FileSystemEventArgs^  e) 
+{
+
+}
+
+	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e)
+	{
+		Stream^ mystream;
+		OpenFileDialog^ openfile = gcnew OpenFileDialog;
+
+		if (openfile->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+		{
+			if ((mystream = openfile->OpenFile()) != nullptr)
+			{
+				String^ file_path = openfile->InitialDirectory + openfile->FileName;
+
+				MessageBox::Show(file_path);
+			
+				mystream->Close();
+
+				_FTP my_file_reader(file_path);
+				this->richtest->Text = my_file_reader.get_konfiguracja();
+			}
+		}
+	}						
 };
 }
