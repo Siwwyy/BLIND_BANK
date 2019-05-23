@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include "_FTP.hpp"
 
 namespace BLINDBANK {
 
@@ -17,8 +18,10 @@ namespace BLINDBANK {
 	public ref class SQL_CONFIGURATION
 	{
 		private:
-
+			/*System::String^ file = L"DB_CONNECTION.txt";
+			_FTP^ Obj = gcnew _FTP(file);*/
 			static String^ konfiguracja = L"datasource=remotemysql.com;port=3306;username=aUy3ZvnM7k;password=wUMpRMvSyN;database=aUy3ZvnM7k";
+		//	static String^ konfiguracja = L"datasource="+datasource+";port="+port+";username="+username+";password="+password+";database="+database+"";
 			static String^ datasource;
 			static String^ port;
 			static String^ username;

@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Admin_Form.cpp" />
+    <ClCompile Include="Configure_String.cpp" />
     <ClCompile Include="Logowanie.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Student_Form.cpp" />

@@ -2012,7 +2012,7 @@ private: System::Void fileSystemWatcher1_Changed(System::Object^  sender, System
 			{
 				String^ file_path = openfile->InitialDirectory + openfile->FileName;
 
-				MessageBox::Show(file_path);
+				//MessageBox::Show(file_path);
 			
 				mystream->Close();
 
