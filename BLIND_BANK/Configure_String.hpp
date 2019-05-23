@@ -19,11 +19,24 @@ namespace BLINDBANK {
 		private:
 
 			static String^ konfiguracja = L"datasource=remotemysql.com;port=3306;username=aUy3ZvnM7k;password=wUMpRMvSyN;database=aUy3ZvnM7k";
-
+			static String^ datasource;
+			static String^ port;
+			static String^ username;
+			static String^ password;
+			static String^ database;
 		public:
 			SQL_CONFIGURATION()
 			{
 
+			}
+
+			SQL_CONFIGURATION(System::String^ datasource, System::String^ port, System::String^ username, System::String^ password, System::String^ database)
+			{
+				this->datasource = datasource;
+				this->port = port;
+				this->username = username;
+				this->password = password;
+				this->database = database;
 			}
 
 			static String^ get_konfiguracja()

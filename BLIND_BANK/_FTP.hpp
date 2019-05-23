@@ -32,11 +32,13 @@ namespace BLINDBANK {
 				//Read the first line of text.
 				line = reader->ReadLine();
 				from_file += line;
+				from_file += '\n';
 				//Continue to read until you reach end of file.
 				while (line != "" && reader->EndOfStream != true)
 				{
 					line = reader->ReadLine();
 					from_file += line;
+					from_file += '\n';
 					//Write the lie to console window.
 					//Console::WriteLine(line);
 					//Read the next line.
