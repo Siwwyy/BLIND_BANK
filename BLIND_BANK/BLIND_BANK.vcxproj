@@ -160,6 +160,7 @@
     <ClInclude Include="Wykladowca_Form.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="_FTP.hpp" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Admin_Form.resx">

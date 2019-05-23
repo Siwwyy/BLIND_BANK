@@ -50,6 +50,9 @@
     <ClInclude Include="Configure_String.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="_FTP.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Logowanie.resx">
