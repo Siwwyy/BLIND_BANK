@@ -176,7 +176,7 @@ namespace BLINDBANK {
 			this->txtHaslo->PasswordChar = '*';
 			this->txtHaslo->Size = System::Drawing::Size(367, 38);
 			this->txtHaslo->TabIndex = 9;
-			this->txtHaslo->Text = L"zaq1@WSX";
+			this->txtHaslo->Text = L"1234";
 			// 
 			// txtIndex
 			// 
@@ -186,11 +186,7 @@ namespace BLINDBANK {
 			this->txtIndex->Name = L"txtIndex";
 			this->txtIndex->Size = System::Drawing::Size(367, 38);
 			this->txtIndex->TabIndex = 8;
-<<<<<<< HEAD
-			this->txtIndex->Text = L"andrydamian@gmail.com";
-=======
 			this->txtIndex->Text = L"kacper@gmail.com";
->>>>>>> 0fe84c6c7f390f151f0e6d2ccef481aed69e10ee
 			// 
 			// button2
 			// 
