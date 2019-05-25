@@ -186,7 +186,11 @@ namespace BLINDBANK {
 			this->txtIndex->Name = L"txtIndex";
 			this->txtIndex->Size = System::Drawing::Size(367, 38);
 			this->txtIndex->TabIndex = 8;
+<<<<<<< HEAD
 			this->txtIndex->Text = L"andrydamian@gmail.com";
+=======
+			this->txtIndex->Text = L"kacper@gmail.com";
+>>>>>>> 0fe84c6c7f390f151f0e6d2ccef481aed69e10ee
 			// 
 			// button2
 			// 
