@@ -2017,7 +2017,7 @@ private: System::Void fileSystemWatcher1_Changed(System::Object^  sender, System
 				mystream->Close();
 
 				_FTP my_file_reader(file_path);
-				this->richtest->Text = my_file_reader.get_konfiguracja();
+				this->richtest->Text = my_file_reader.get_from_file();
 			}
 		}
 	}						
