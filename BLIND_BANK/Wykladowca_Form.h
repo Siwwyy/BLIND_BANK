@@ -3,6 +3,7 @@
 #include "Configure_String.hpp"
 //#include <vector>
 #include <cliext/vector>
+#include <Windows.h>
 
 namespace BLINDBANK {
 
@@ -323,6 +324,12 @@ private: System::Windows::Forms::Label^  label7;
 				 this->btnPOKAZPRACE = (gcnew System::Windows::Forms::Button());
 				 this->dgPOKAZPRACE = (gcnew System::Windows::Forms::DataGridView());
 				 this->Profil = (gcnew System::Windows::Forms::TabPage());
+				 this->lbProfilEmail = (gcnew System::Windows::Forms::Label());
+				 this->lbProfilNazwisko = (gcnew System::Windows::Forms::Label());
+				 this->lbProfilImie = (gcnew System::Windows::Forms::Label());
+				 this->label8 = (gcnew System::Windows::Forms::Label());
+				 this->label7 = (gcnew System::Windows::Forms::Label());
+				 this->label6 = (gcnew System::Windows::Forms::Label());
 				 this->DodajPracedomowa = (gcnew System::Windows::Forms::TabPage());
 				 this->button1 = (gcnew System::Windows::Forms::Button());
 				 this->contentBox = (gcnew System::Windows::Forms::RichTextBox());
@@ -333,12 +340,6 @@ private: System::Windows::Forms::Label^  label7;
 				 this->label3 = (gcnew System::Windows::Forms::Label());
 				 this->label2 = (gcnew System::Windows::Forms::Label());
 				 this->combobox1 = (gcnew System::Windows::Forms::ComboBox());
-				 this->label6 = (gcnew System::Windows::Forms::Label());
-				 this->label7 = (gcnew System::Windows::Forms::Label());
-				 this->label8 = (gcnew System::Windows::Forms::Label());
-				 this->lbProfilImie = (gcnew System::Windows::Forms::Label());
-				 this->lbProfilNazwisko = (gcnew System::Windows::Forms::Label());
-				 this->lbProfilEmail = (gcnew System::Windows::Forms::Label());
 				 this->tabControl1->SuspendLayout();
 				 this->Grupy->SuspendLayout();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPOKAZGRUPYGRUPY))->BeginInit();
@@ -355,10 +356,9 @@ private: System::Windows::Forms::Label^  label7;
 				 this->lblAdmin->AutoSize = true;
 				 this->lblAdmin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					 static_cast<System::Byte>(0)));
-				 this->lblAdmin->Location = System::Drawing::Point(62, 7);
-				 this->lblAdmin->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->lblAdmin->Location = System::Drawing::Point(83, 9);
 				 this->lblAdmin->Name = L"lblAdmin";
-				 this->lblAdmin->Size = System::Drawing::Size(0, 25);
+				 this->lblAdmin->Size = System::Drawing::Size(0, 29);
 				 this->lblAdmin->TabIndex = 4;
 				 // 
 				 // label1
@@ -366,10 +366,9 @@ private: System::Windows::Forms::Label^  label7;
 				 this->label1->AutoSize = true;
 				 this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					 static_cast<System::Byte>(0)));
-				 this->label1->Location = System::Drawing::Point(9, 7);
-				 this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->label1->Location = System::Drawing::Point(12, 9);
 				 this->label1->Name = L"label1";
-				 this->label1->Size = System::Drawing::Size(56, 25);
+				 this->label1->Size = System::Drawing::Size(70, 29);
 				 this->label1->TabIndex = 3;
 				 this->label1->Text = L"Witaj";
 				 // 
@@ -382,10 +381,10 @@ private: System::Windows::Forms::Label^  label7;
 				 this->dateTimePicker1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					 static_cast<System::Byte>(0)));
 				 this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-				 this->dateTimePicker1->Location = System::Drawing::Point(689, 5);
-				 this->dateTimePicker1->Margin = System::Windows::Forms::Padding(2);
+				 this->dateTimePicker1->Location = System::Drawing::Point(919, 6);
+				 this->dateTimePicker1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->dateTimePicker1->Name = L"dateTimePicker1";
-				 this->dateTimePicker1->Size = System::Drawing::Size(114, 23);
+				 this->dateTimePicker1->Size = System::Drawing::Size(151, 26);
 				 this->dateTimePicker1->TabIndex = 7;
 				 this->dateTimePicker1->Value = System::DateTime(2019, 5, 2, 12, 16, 0, 0);
 				 // 
@@ -393,10 +392,10 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 this->btnWYLOGUJ->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					 static_cast<System::Byte>(0)));
-				 this->btnWYLOGUJ->Location = System::Drawing::Point(579, 3);
-				 this->btnWYLOGUJ->Margin = System::Windows::Forms::Padding(2);
+				 this->btnWYLOGUJ->Location = System::Drawing::Point(772, 4);
+				 this->btnWYLOGUJ->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->btnWYLOGUJ->Name = L"btnWYLOGUJ";
-				 this->btnWYLOGUJ->Size = System::Drawing::Size(106, 25);
+				 this->btnWYLOGUJ->Size = System::Drawing::Size(141, 31);
 				 this->btnWYLOGUJ->TabIndex = 13;
 				 this->btnWYLOGUJ->Text = L"Wyloguj";
 				 this->btnWYLOGUJ->UseVisualStyleBackColor = true;
@@ -409,11 +408,11 @@ private: System::Windows::Forms::Label^  label7;
 				 this->tabControl1->Controls->Add(this->Profil);
 				 this->tabControl1->Controls->Add(this->DodajPracedomowa);
 				 this->tabControl1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10));
-				 this->tabControl1->Location = System::Drawing::Point(9, 33);
-				 this->tabControl1->Margin = System::Windows::Forms::Padding(2);
+				 this->tabControl1->Location = System::Drawing::Point(12, 41);
+				 this->tabControl1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->tabControl1->Name = L"tabControl1";
 				 this->tabControl1->SelectedIndex = 0;
-				 this->tabControl1->Size = System::Drawing::Size(794, 574);
+				 this->tabControl1->Size = System::Drawing::Size(1059, 706);
 				 this->tabControl1->TabIndex = 14;
 				 // 
 				 // Grupy
@@ -422,21 +421,21 @@ private: System::Windows::Forms::Label^  label7;
 				 this->Grupy->Controls->Add(this->btnPokazCzlonkow);
 				 this->Grupy->Controls->Add(this->dgPOKAZGRUPYGRUPY);
 				 this->Grupy->Controls->Add(this->btnPOKAZGRUPYGRUPY);
-				 this->Grupy->Location = System::Drawing::Point(4, 25);
-				 this->Grupy->Margin = System::Windows::Forms::Padding(2);
+				 this->Grupy->Location = System::Drawing::Point(4, 29);
+				 this->Grupy->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->Grupy->Name = L"Grupy";
-				 this->Grupy->Padding = System::Windows::Forms::Padding(2);
-				 this->Grupy->Size = System::Drawing::Size(786, 545);
+				 this->Grupy->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+				 this->Grupy->Size = System::Drawing::Size(1051, 673);
 				 this->Grupy->TabIndex = 0;
 				 this->Grupy->Text = L"Grupy";
 				 // 
 				 // btnPokazCzlonkow
 				 // 
 				 this->btnPokazCzlonkow->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-				 this->btnPokazCzlonkow->Location = System::Drawing::Point(147, 462);
-				 this->btnPokazCzlonkow->Margin = System::Windows::Forms::Padding(2);
+				 this->btnPokazCzlonkow->Location = System::Drawing::Point(196, 569);
+				 this->btnPokazCzlonkow->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->btnPokazCzlonkow->Name = L"btnPokazCzlonkow";
-				 this->btnPokazCzlonkow->Size = System::Drawing::Size(218, 58);
+				 this->btnPokazCzlonkow->Size = System::Drawing::Size(291, 71);
 				 this->btnPokazCzlonkow->TabIndex = 2;
 				 this->btnPokazCzlonkow->Text = L"Pokaz cz³onków grupy";
 				 this->btnPokazCzlonkow->UseVisualStyleBackColor = true;
@@ -447,22 +446,22 @@ private: System::Windows::Forms::Label^  label7;
 				 this->dgPOKAZGRUPYGRUPY->AllowUserToAddRows = false;
 				 this->dgPOKAZGRUPYGRUPY->AllowUserToDeleteRows = false;
 				 this->dgPOKAZGRUPYGRUPY->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-				 this->dgPOKAZGRUPYGRUPY->Location = System::Drawing::Point(4, 5);
-				 this->dgPOKAZGRUPYGRUPY->Margin = System::Windows::Forms::Padding(2);
+				 this->dgPOKAZGRUPYGRUPY->Location = System::Drawing::Point(5, 6);
+				 this->dgPOKAZGRUPYGRUPY->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->dgPOKAZGRUPYGRUPY->Name = L"dgPOKAZGRUPYGRUPY";
 				 this->dgPOKAZGRUPYGRUPY->ReadOnly = true;
 				 this->dgPOKAZGRUPYGRUPY->RowTemplate->Height = 24;
-				 this->dgPOKAZGRUPYGRUPY->Size = System::Drawing::Size(778, 440);
+				 this->dgPOKAZGRUPYGRUPY->Size = System::Drawing::Size(1037, 542);
 				 this->dgPOKAZGRUPYGRUPY->TabIndex = 1;
 				 this->dgPOKAZGRUPYGRUPY->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Wykladowca_Form::dgPOKAZGRUPYGRUPY_CellClick);
 				 this->dgPOKAZGRUPYGRUPY->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Wykladowca_Form::dgPOKAZGRUPYGRUPY_CellContentClick);
 				 // 
 				 // btnPOKAZGRUPYGRUPY
 				 // 
-				 this->btnPOKAZGRUPYGRUPY->Location = System::Drawing::Point(26, 462);
-				 this->btnPOKAZGRUPYGRUPY->Margin = System::Windows::Forms::Padding(2);
+				 this->btnPOKAZGRUPYGRUPY->Location = System::Drawing::Point(35, 569);
+				 this->btnPOKAZGRUPYGRUPY->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->btnPOKAZGRUPYGRUPY->Name = L"btnPOKAZGRUPYGRUPY";
-				 this->btnPOKAZGRUPYGRUPY->Size = System::Drawing::Size(117, 58);
+				 this->btnPOKAZGRUPYGRUPY->Size = System::Drawing::Size(156, 71);
 				 this->btnPOKAZGRUPYGRUPY->TabIndex = 0;
 				 this->btnPOKAZGRUPYGRUPY->Text = L"Pokaz Grupy";
 				 this->btnPOKAZGRUPYGRUPY->UseVisualStyleBackColor = true;
@@ -485,37 +484,43 @@ private: System::Windows::Forms::Label^  label7;
 				 this->PraceDomowe->Controls->Add(this->dgtmp);
 				 this->PraceDomowe->Controls->Add(this->btnPOKAZPRACE);
 				 this->PraceDomowe->Controls->Add(this->dgPOKAZPRACE);
-				 this->PraceDomowe->Location = System::Drawing::Point(4, 25);
-				 this->PraceDomowe->Margin = System::Windows::Forms::Padding(2);
+				 this->PraceDomowe->Location = System::Drawing::Point(4, 29);
+				 this->PraceDomowe->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->PraceDomowe->Name = L"PraceDomowe";
-				 this->PraceDomowe->Padding = System::Windows::Forms::Padding(2);
-				 this->PraceDomowe->Size = System::Drawing::Size(786, 545);
+				 this->PraceDomowe->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+				 this->PraceDomowe->Size = System::Drawing::Size(1051, 673);
 				 this->PraceDomowe->TabIndex = 1;
 				 this->PraceDomowe->Text = L"Prace domowe";
 				 // 
 				 // btnDOWNLOAD
 				 // 
-				 this->btnDOWNLOAD->Location = System::Drawing::Point(203, 473);
+				 this->btnDOWNLOAD->Location = System::Drawing::Point(271, 582);
+				 this->btnDOWNLOAD->Margin = System::Windows::Forms::Padding(4);
 				 this->btnDOWNLOAD->Name = L"btnDOWNLOAD";
-				 this->btnDOWNLOAD->Size = System::Drawing::Size(221, 67);
+				 this->btnDOWNLOAD->Size = System::Drawing::Size(295, 82);
 				 this->btnDOWNLOAD->TabIndex = 13;
 				 this->btnDOWNLOAD->Text = L"Pobierz pliki";
 				 this->btnDOWNLOAD->UseVisualStyleBackColor = true;
+				 this->btnDOWNLOAD->Click += gcnew System::EventHandler(this, &Wykladowca_Form::btnDOWNLOAD_Click);
 				 // 
 				 // dgPLIKI
 				 // 
+				 this->dgPLIKI->AllowUserToAddRows = false;
+				 this->dgPLIKI->AllowUserToDeleteRows = false;
 				 this->dgPLIKI->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-				 this->dgPLIKI->Location = System::Drawing::Point(6, 235);
+				 this->dgPLIKI->Location = System::Drawing::Point(8, 289);
+				 this->dgPLIKI->Margin = System::Windows::Forms::Padding(4);
 				 this->dgPLIKI->Name = L"dgPLIKI";
-				 this->dgPLIKI->Size = System::Drawing::Size(418, 232);
+				 this->dgPLIKI->ReadOnly = true;
+				 this->dgPLIKI->Size = System::Drawing::Size(557, 286);
 				 this->dgPLIKI->TabIndex = 12;
 				 // 
 				 // btnSubmitOcena
 				 // 
-				 this->btnSubmitOcena->Location = System::Drawing::Point(532, 357);
-				 this->btnSubmitOcena->Margin = System::Windows::Forms::Padding(2);
+				 this->btnSubmitOcena->Location = System::Drawing::Point(709, 439);
+				 this->btnSubmitOcena->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->btnSubmitOcena->Name = L"btnSubmitOcena";
-				 this->btnSubmitOcena->Size = System::Drawing::Size(167, 52);
+				 this->btnSubmitOcena->Size = System::Drawing::Size(223, 64);
 				 this->btnSubmitOcena->TabIndex = 11;
 				 this->btnSubmitOcena->Text = L"ZatwierdŸ";
 				 this->btnSubmitOcena->UseVisualStyleBackColor = true;
@@ -524,10 +529,9 @@ private: System::Windows::Forms::Label^  label7;
 				 // lbOcenaOsoba
 				 // 
 				 this->lbOcenaOsoba->AutoSize = true;
-				 this->lbOcenaOsoba->Location = System::Drawing::Point(592, 281);
-				 this->lbOcenaOsoba->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->lbOcenaOsoba->Location = System::Drawing::Point(789, 346);
 				 this->lbOcenaOsoba->Name = L"lbOcenaOsoba";
-				 this->lbOcenaOsoba->Size = System::Drawing::Size(50, 17);
+				 this->lbOcenaOsoba->Size = System::Drawing::Size(58, 20);
 				 this->lbOcenaOsoba->TabIndex = 10;
 				 this->lbOcenaOsoba->Text = L"Ocena";
 				 // 
@@ -535,20 +539,19 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 this->boxOcena->FormattingEnabled = true;
 				 this->boxOcena->Items->AddRange(gcnew cli::array< System::Object^  >(7) { L"5", L"4,5", L"4", L"3,5", L"3", L"2,5", L"2" });
-				 this->boxOcena->Location = System::Drawing::Point(566, 300);
-				 this->boxOcena->Margin = System::Windows::Forms::Padding(2);
+				 this->boxOcena->Location = System::Drawing::Point(755, 369);
+				 this->boxOcena->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->boxOcena->Name = L"boxOcena";
-				 this->boxOcena->Size = System::Drawing::Size(92, 24);
+				 this->boxOcena->Size = System::Drawing::Size(121, 28);
 				 this->boxOcena->TabIndex = 9;
 				 // 
 				 // lbOsobaC
 				 // 
 				 this->lbOsobaC->AutoSize = true;
-				 this->lbOsobaC->Location = System::Drawing::Point(515, 245);
-				 this->lbOsobaC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-				 this->lbOsobaC->MinimumSize = System::Drawing::Size(200, 0);
+				 this->lbOsobaC->Location = System::Drawing::Point(687, 302);
+				 this->lbOsobaC->MinimumSize = System::Drawing::Size(267, 0);
 				 this->lbOsobaC->Name = L"lbOsobaC";
-				 this->lbOsobaC->Size = System::Drawing::Size(200, 17);
+				 this->lbOsobaC->Size = System::Drawing::Size(267, 20);
 				 this->lbOsobaC->TabIndex = 8;
 				 this->lbOsobaC->Text = L"Nikt";
 				 this->lbOsobaC->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -557,22 +560,20 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 this->lbOsoba->AutoSize = true;
 				 this->lbOsoba->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-				 this->lbOsoba->Location = System::Drawing::Point(540, 204);
-				 this->lbOsoba->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->lbOsoba->Location = System::Drawing::Point(720, 251);
 				 this->lbOsoba->Name = L"lbOsoba";
-				 this->lbOsoba->Size = System::Drawing::Size(157, 25);
+				 this->lbOsoba->Size = System::Drawing::Size(197, 29);
 				 this->lbOsoba->TabIndex = 7;
 				 this->lbOsoba->Text = L"Wybrana osoba:";
 				 // 
 				 // lbCONTENTC
 				 // 
 				 this->lbCONTENTC->AutoSize = true;
-				 this->lbCONTENTC->Location = System::Drawing::Point(467, 85);
-				 this->lbCONTENTC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-				 this->lbCONTENTC->MaximumSize = System::Drawing::Size(300, 0);
-				 this->lbCONTENTC->MinimumSize = System::Drawing::Size(300, 0);
+				 this->lbCONTENTC->Location = System::Drawing::Point(623, 105);
+				 this->lbCONTENTC->MaximumSize = System::Drawing::Size(400, 0);
+				 this->lbCONTENTC->MinimumSize = System::Drawing::Size(400, 0);
 				 this->lbCONTENTC->Name = L"lbCONTENTC";
-				 this->lbCONTENTC->Size = System::Drawing::Size(300, 17);
+				 this->lbCONTENTC->Size = System::Drawing::Size(400, 20);
 				 this->lbCONTENTC->TabIndex = 6;
 				 this->lbCONTENTC->Text = L"          ";
 				 this->lbCONTENTC->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -581,22 +582,20 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 this->lbCONTENT->AutoSize = true;
 				 this->lbCONTENT->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-				 this->lbCONTENT->Location = System::Drawing::Point(580, 62);
-				 this->lbCONTENT->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->lbCONTENT->Location = System::Drawing::Point(773, 76);
 				 this->lbCONTENT->Name = L"lbCONTENT";
-				 this->lbCONTENT->Size = System::Drawing::Size(68, 25);
+				 this->lbCONTENT->Size = System::Drawing::Size(103, 29);
 				 this->lbCONTENT->TabIndex = 5;
 				 this->lbCONTENT->Text = L"Treœæ:";
 				 // 
 				 // lbTITLEC
 				 // 
 				 this->lbTITLEC->AutoSize = true;
-				 this->lbTITLEC->Location = System::Drawing::Point(467, 37);
-				 this->lbTITLEC->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
-				 this->lbTITLEC->MaximumSize = System::Drawing::Size(300, 0);
-				 this->lbTITLEC->MinimumSize = System::Drawing::Size(300, 0);
+				 this->lbTITLEC->Location = System::Drawing::Point(623, 46);
+				 this->lbTITLEC->MaximumSize = System::Drawing::Size(400, 0);
+				 this->lbTITLEC->MinimumSize = System::Drawing::Size(400, 0);
 				 this->lbTITLEC->Name = L"lbTITLEC";
-				 this->lbTITLEC->Size = System::Drawing::Size(300, 17);
+				 this->lbTITLEC->Size = System::Drawing::Size(400, 20);
 				 this->lbTITLEC->TabIndex = 4;
 				 this->lbTITLEC->Text = L"     ";
 				 this->lbTITLEC->TextAlign = System::Drawing::ContentAlignment::TopCenter;
@@ -605,29 +604,28 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 this->lbTITLE->AutoSize = true;
 				 this->lbTITLE->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
-				 this->lbTITLE->Location = System::Drawing::Point(580, 5);
-				 this->lbTITLE->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->lbTITLE->Location = System::Drawing::Point(773, 6);
 				 this->lbTITLE->Name = L"lbTITLE";
-				 this->lbTITLE->Size = System::Drawing::Size(61, 25);
+				 this->lbTITLE->Size = System::Drawing::Size(77, 29);
 				 this->lbTITLE->TabIndex = 3;
 				 this->lbTITLE->Text = L"Tytu³:";
 				 // 
 				 // dgtmp
 				 // 
 				 this->dgtmp->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-				 this->dgtmp->Location = System::Drawing::Point(780, 539);
-				 this->dgtmp->Margin = System::Windows::Forms::Padding(2);
+				 this->dgtmp->Location = System::Drawing::Point(1040, 663);
+				 this->dgtmp->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->dgtmp->Name = L"dgtmp";
 				 this->dgtmp->RowTemplate->Height = 24;
-				 this->dgtmp->Size = System::Drawing::Size(8, 9);
+				 this->dgtmp->Size = System::Drawing::Size(11, 11);
 				 this->dgtmp->TabIndex = 2;
 				 // 
 				 // btnPOKAZPRACE
 				 // 
-				 this->btnPOKAZPRACE->Location = System::Drawing::Point(6, 470);
-				 this->btnPOKAZPRACE->Margin = System::Windows::Forms::Padding(2);
+				 this->btnPOKAZPRACE->Location = System::Drawing::Point(8, 578);
+				 this->btnPOKAZPRACE->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->btnPOKAZPRACE->Name = L"btnPOKAZPRACE";
-				 this->btnPOKAZPRACE->Size = System::Drawing::Size(192, 71);
+				 this->btnPOKAZPRACE->Size = System::Drawing::Size(256, 87);
 				 this->btnPOKAZPRACE->TabIndex = 1;
 				 this->btnPOKAZPRACE->Text = L"Poka¿ prace domowe";
 				 this->btnPOKAZPRACE->UseVisualStyleBackColor = true;
@@ -635,12 +633,15 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 // dgPOKAZPRACE
 				 // 
+				 this->dgPOKAZPRACE->AllowUserToAddRows = false;
+				 this->dgPOKAZPRACE->AllowUserToDeleteRows = false;
 				 this->dgPOKAZPRACE->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-				 this->dgPOKAZPRACE->Location = System::Drawing::Point(4, 5);
-				 this->dgPOKAZPRACE->Margin = System::Windows::Forms::Padding(2);
+				 this->dgPOKAZPRACE->Location = System::Drawing::Point(5, 6);
+				 this->dgPOKAZPRACE->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->dgPOKAZPRACE->Name = L"dgPOKAZPRACE";
+				 this->dgPOKAZPRACE->ReadOnly = true;
 				 this->dgPOKAZPRACE->RowTemplate->Height = 24;
-				 this->dgPOKAZPRACE->Size = System::Drawing::Size(420, 224);
+				 this->dgPOKAZPRACE->Size = System::Drawing::Size(560, 276);
 				 this->dgPOKAZPRACE->TabIndex = 0;
 				 this->dgPOKAZPRACE->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Wykladowca_Form::dgPOKAZPRACE_CellClick);
 				 // 
@@ -653,12 +654,77 @@ private: System::Windows::Forms::Label^  label7;
 				 this->Profil->Controls->Add(this->label8);
 				 this->Profil->Controls->Add(this->label7);
 				 this->Profil->Controls->Add(this->label6);
-				 this->Profil->Location = System::Drawing::Point(4, 25);
-				 this->Profil->Margin = System::Windows::Forms::Padding(2);
+				 this->Profil->Location = System::Drawing::Point(4, 29);
+				 this->Profil->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->Profil->Name = L"Profil";
-				 this->Profil->Size = System::Drawing::Size(786, 545);
+				 this->Profil->Size = System::Drawing::Size(1051, 673);
 				 this->Profil->TabIndex = 2;
 				 this->Profil->Text = L"Profil";
+				 // 
+				 // lbProfilEmail
+				 // 
+				 this->lbProfilEmail->AutoSize = true;
+				 this->lbProfilEmail->Location = System::Drawing::Point(137, 96);
+				 this->lbProfilEmail->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+				 this->lbProfilEmail->MinimumSize = System::Drawing::Size(200, 0);
+				 this->lbProfilEmail->Name = L"lbProfilEmail";
+				 this->lbProfilEmail->Size = System::Drawing::Size(200, 20);
+				 this->lbProfilEmail->TabIndex = 5;
+				 this->lbProfilEmail->Text = L" ";
+				 // 
+				 // lbProfilNazwisko
+				 // 
+				 this->lbProfilNazwisko->AutoSize = true;
+				 this->lbProfilNazwisko->Location = System::Drawing::Point(137, 58);
+				 this->lbProfilNazwisko->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+				 this->lbProfilNazwisko->MinimumSize = System::Drawing::Size(200, 0);
+				 this->lbProfilNazwisko->Name = L"lbProfilNazwisko";
+				 this->lbProfilNazwisko->Size = System::Drawing::Size(200, 20);
+				 this->lbProfilNazwisko->TabIndex = 4;
+				 this->lbProfilNazwisko->Text = L" ";
+				 // 
+				 // lbProfilImie
+				 // 
+				 this->lbProfilImie->AutoSize = true;
+				 this->lbProfilImie->Location = System::Drawing::Point(137, 17);
+				 this->lbProfilImie->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+				 this->lbProfilImie->MinimumSize = System::Drawing::Size(200, 0);
+				 this->lbProfilImie->Name = L"lbProfilImie";
+				 this->lbProfilImie->Size = System::Drawing::Size(200, 20);
+				 this->lbProfilImie->TabIndex = 3;
+				 this->lbProfilImie->Text = L" ";
+				 this->lbProfilImie->Click += gcnew System::EventHandler(this, &Wykladowca_Form::lbProfilImie_Click);
+				 // 
+				 // label8
+				 // 
+				 this->label8->AutoSize = true;
+				 this->label8->Location = System::Drawing::Point(21, 96);
+				 this->label8->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+				 this->label8->Name = L"label8";
+				 this->label8->Size = System::Drawing::Size(61, 20);
+				 this->label8->TabIndex = 2;
+				 this->label8->Text = L"Email: ";
+				 // 
+				 // label7
+				 // 
+				 this->label7->AutoSize = true;
+				 this->label7->Location = System::Drawing::Point(21, 58);
+				 this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+				 this->label7->Name = L"label7";
+				 this->label7->Size = System::Drawing::Size(91, 20);
+				 this->label7->TabIndex = 1;
+				 this->label7->Text = L"Nazwisko: ";
+				 // 
+				 // label6
+				 // 
+				 this->label6->AutoSize = true;
+				 this->label6->Location = System::Drawing::Point(21, 17);
+				 this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+				 this->label6->Name = L"label6";
+				 this->label6->Size = System::Drawing::Size(45, 20);
+				 this->label6->TabIndex = 0;
+				 this->label6->Text = L"Imie:";
+				 this->label6->Click += gcnew System::EventHandler(this, &Wykladowca_Form::label6_Click);
 				 // 
 				 // DodajPracedomowa
 				 // 
@@ -672,20 +738,20 @@ private: System::Windows::Forms::Label^  label7;
 				 this->DodajPracedomowa->Controls->Add(this->label3);
 				 this->DodajPracedomowa->Controls->Add(this->label2);
 				 this->DodajPracedomowa->Controls->Add(this->combobox1);
-				 this->DodajPracedomowa->Location = System::Drawing::Point(4, 25);
-				 this->DodajPracedomowa->Margin = System::Windows::Forms::Padding(2);
+				 this->DodajPracedomowa->Location = System::Drawing::Point(4, 29);
+				 this->DodajPracedomowa->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->DodajPracedomowa->Name = L"DodajPracedomowa";
-				 this->DodajPracedomowa->Padding = System::Windows::Forms::Padding(2);
-				 this->DodajPracedomowa->Size = System::Drawing::Size(786, 545);
+				 this->DodajPracedomowa->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+				 this->DodajPracedomowa->Size = System::Drawing::Size(1051, 673);
 				 this->DodajPracedomowa->TabIndex = 3;
 				 this->DodajPracedomowa->Text = L"Dodaj prace domow¹";
 				 // 
 				 // button1
 				 // 
-				 this->button1->Location = System::Drawing::Point(258, 481);
-				 this->button1->Margin = System::Windows::Forms::Padding(2);
+				 this->button1->Location = System::Drawing::Point(344, 592);
+				 this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->button1->Name = L"button1";
-				 this->button1->Size = System::Drawing::Size(264, 52);
+				 this->button1->Size = System::Drawing::Size(352, 64);
 				 this->button1->TabIndex = 8;
 				 this->button1->Text = L"Dodaj";
 				 this->button1->UseVisualStyleBackColor = true;
@@ -693,150 +759,87 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 // contentBox
 				 // 
-				 this->contentBox->Location = System::Drawing::Point(109, 245);
-				 this->contentBox->Margin = System::Windows::Forms::Padding(2);
+				 this->contentBox->Location = System::Drawing::Point(145, 302);
+				 this->contentBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->contentBox->Name = L"contentBox";
-				 this->contentBox->Size = System::Drawing::Size(565, 216);
+				 this->contentBox->Size = System::Drawing::Size(752, 265);
 				 this->contentBox->TabIndex = 7;
 				 this->contentBox->Text = L"";
 				 // 
 				 // label5
 				 // 
 				 this->label5->AutoSize = true;
-				 this->label5->Location = System::Drawing::Point(332, 174);
-				 this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->label5->Location = System::Drawing::Point(443, 214);
 				 this->label5->Name = L"label5";
-				 this->label5->Size = System::Drawing::Size(124, 17);
+				 this->label5->Size = System::Drawing::Size(145, 20);
 				 this->label5->TabIndex = 6;
 				 this->label5->Text = L"Termin oddawania";
 				 // 
 				 // timePicker
 				 // 
-				 this->timePicker->Location = System::Drawing::Point(304, 202);
-				 this->timePicker->Margin = System::Windows::Forms::Padding(2);
+				 this->timePicker->Location = System::Drawing::Point(405, 249);
+				 this->timePicker->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->timePicker->Name = L"timePicker";
-				 this->timePicker->Size = System::Drawing::Size(164, 23);
+				 this->timePicker->Size = System::Drawing::Size(217, 26);
 				 this->timePicker->TabIndex = 5;
 				 // 
 				 // label4
 				 // 
 				 this->label4->AutoSize = true;
-				 this->label4->Location = System::Drawing::Point(369, 132);
-				 this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->label4->Location = System::Drawing::Point(492, 162);
 				 this->label4->Name = L"label4";
-				 this->label4->Size = System::Drawing::Size(39, 17);
+				 this->label4->Size = System::Drawing::Size(47, 20);
 				 this->label4->TabIndex = 4;
 				 this->label4->Text = L"Tytu³";
 				 // 
 				 // titleBox
 				 // 
-				 this->titleBox->Location = System::Drawing::Point(304, 150);
-				 this->titleBox->Margin = System::Windows::Forms::Padding(2);
+				 this->titleBox->Location = System::Drawing::Point(405, 185);
+				 this->titleBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->titleBox->Name = L"titleBox";
-				 this->titleBox->Size = System::Drawing::Size(164, 23);
+				 this->titleBox->Size = System::Drawing::Size(217, 26);
 				 this->titleBox->TabIndex = 3;
 				 // 
 				 // label3
 				 // 
 				 this->label3->AutoSize = true;
 				 this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 40));
-				 this->label3->Location = System::Drawing::Point(145, 0);
-				 this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->label3->Location = System::Drawing::Point(193, 0);
 				 this->label3->Name = L"label3";
-				 this->label3->Size = System::Drawing::Size(532, 63);
+				 this->label3->Size = System::Drawing::Size(658, 76);
 				 this->label3->TabIndex = 2;
 				 this->label3->Text = L"Nowa praca domowa";
 				 // 
 				 // label2
 				 // 
 				 this->label2->AutoSize = true;
-				 this->label2->Location = System::Drawing::Point(346, 88);
-				 this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+				 this->label2->Location = System::Drawing::Point(461, 108);
 				 this->label2->Name = L"label2";
-				 this->label2->Size = System::Drawing::Size(100, 17);
+				 this->label2->Size = System::Drawing::Size(117, 20);
 				 this->label2->TabIndex = 1;
 				 this->label2->Text = L"Wybierz grupe";
 				 // 
 				 // combobox1
 				 // 
 				 this->combobox1->FormattingEnabled = true;
-				 this->combobox1->Location = System::Drawing::Point(304, 106);
-				 this->combobox1->Margin = System::Windows::Forms::Padding(2);
+				 this->combobox1->Location = System::Drawing::Point(405, 130);
+				 this->combobox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->combobox1->Name = L"combobox1";
-				 this->combobox1->Size = System::Drawing::Size(164, 24);
+				 this->combobox1->Size = System::Drawing::Size(217, 28);
 				 this->combobox1->TabIndex = 0;
-				 // 
-				 // label6
-				 // 
-				 this->label6->AutoSize = true;
-				 this->label6->Location = System::Drawing::Point(16, 14);
-				 this->label6->Name = L"label6";
-				 this->label6->Size = System::Drawing::Size(37, 17);
-				 this->label6->TabIndex = 0;
-				 this->label6->Text = L"Imie:";
-				 this->label6->Click += gcnew System::EventHandler(this, &Wykladowca_Form::label6_Click);
-				 // 
-				 // label7
-				 // 
-				 this->label7->AutoSize = true;
-				 this->label7->Location = System::Drawing::Point(16, 47);
-				 this->label7->Name = L"label7";
-				 this->label7->Size = System::Drawing::Size(75, 17);
-				 this->label7->TabIndex = 1;
-				 this->label7->Text = L"Nazwisko: ";
-				 // 
-				 // label8
-				 // 
-				 this->label8->AutoSize = true;
-				 this->label8->Location = System::Drawing::Point(16, 78);
-				 this->label8->Name = L"label8";
-				 this->label8->Size = System::Drawing::Size(50, 17);
-				 this->label8->TabIndex = 2;
-				 this->label8->Text = L"Email: ";
-				 // 
-				 // lbProfilImie
-				 // 
-				 this->lbProfilImie->AutoSize = true;
-				 this->lbProfilImie->Location = System::Drawing::Point(103, 14);
-				 this->lbProfilImie->MinimumSize = System::Drawing::Size(150, 0);
-				 this->lbProfilImie->Name = L"lbProfilImie";
-				 this->lbProfilImie->Size = System::Drawing::Size(150, 17);
-				 this->lbProfilImie->TabIndex = 3;
-				 this->lbProfilImie->Text = L" ";
-				 this->lbProfilImie->Click += gcnew System::EventHandler(this, &Wykladowca_Form::lbProfilImie_Click);
-				 // 
-				 // lbProfilNazwisko
-				 // 
-				 this->lbProfilNazwisko->AutoSize = true;
-				 this->lbProfilNazwisko->Location = System::Drawing::Point(103, 47);
-				 this->lbProfilNazwisko->MinimumSize = System::Drawing::Size(150, 0);
-				 this->lbProfilNazwisko->Name = L"lbProfilNazwisko";
-				 this->lbProfilNazwisko->Size = System::Drawing::Size(150, 17);
-				 this->lbProfilNazwisko->TabIndex = 4;
-				 this->lbProfilNazwisko->Text = L" ";
-				 // 
-				 // lbProfilEmail
-				 // 
-				 this->lbProfilEmail->AutoSize = true;
-				 this->lbProfilEmail->Location = System::Drawing::Point(103, 78);
-				 this->lbProfilEmail->MinimumSize = System::Drawing::Size(150, 0);
-				 this->lbProfilEmail->Name = L"lbProfilEmail";
-				 this->lbProfilEmail->Size = System::Drawing::Size(150, 17);
-				 this->lbProfilEmail->TabIndex = 5;
-				 this->lbProfilEmail->Text = L" ";
 				 // 
 				 // Wykladowca_Form
 				 // 
-				 this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+				 this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 				 this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-				 this->ClientSize = System::Drawing::Size(812, 612);
+				 this->ClientSize = System::Drawing::Size(1083, 753);
 				 this->Controls->Add(this->tabControl1);
 				 this->Controls->Add(this->btnWYLOGUJ);
 				 this->Controls->Add(this->dateTimePicker1);
 				 this->Controls->Add(this->lblAdmin);
 				 this->Controls->Add(this->label1);
 				 this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-				 this->Margin = System::Windows::Forms::Padding(2);
+				 this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->MaximizeBox = false;
 				 this->MinimizeBox = false;
 				 this->Name = L"Wykladowca_Form";
@@ -1226,9 +1229,24 @@ private: System::Void btnSubmitOcena_Click(System::Object^  sender, System::Even
 			//transakcja->Cl
 		}
 	}
-private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  e) {
-}
-private: System::Void lbProfilImie_Click(System::Object^  sender, System::EventArgs^  e) {
-}
+
+
+	private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+
+	}
+
+
+	private: System::Void lbProfilImie_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+
+	}
+
+
+	private: System::Void btnDOWNLOAD_Click(System::Object^  sender, System::EventArgs^  e) 
+	{
+		//system("mkdir Prace_Domowe");
+		//system("cd Prace_Domowe");
+	}
 };
 }
