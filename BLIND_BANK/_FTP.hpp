@@ -71,14 +71,23 @@ namespace BLINDBANK {
 			{
 				String^ file = "Prace_Domowe/"+number+file_path->Remove((file_path->Length - 2), 2);
 				StreamWriter^ writer = gcnew StreamWriter(file, true, Encoding::ASCII);
-				//to_file += '~';
 				for (size_t i = 0; i < to_file->Length; ++i)
 				{
-					/*if (to_file[i] == ' ')
+					if (to_file[i] == '{' || to_file[i] == '}')
 					{
 						writer->Write('\n');
-					}*/
-					writer->Write(to_file[i]);
+						writer->Write(to_file[i]);
+						writer->Write('\n');
+					}
+					else if (to_file[i] == '>' || to_file[i] == ';')
+					{
+						writer->Write(to_file[i]);
+						writer->Write('\n');
+					}
+					else
+					{
+						writer->Write(to_file[i]);
+					}
 				}
 				writer->Close();
 				++number;
