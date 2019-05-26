@@ -441,8 +441,15 @@ namespace BLINDBANK {
 					{
 						String^ Admin_Name = odczytanie->GetString(0);
 						this->Visible = false;
-						Student_Form^ program = gcnew Student_Form(id_rola, Admin_Name,this);
+
+						odczytanie->Close();
+						zapytanie_admin_name = gcnew MySqlCommand("SELECT iduzytkownicy FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
+						odczytanie = zapytanie_admin_name->ExecuteReader();
+						odczytanie->Read();
+						int id = odczytanie->GetInt32(0);
+						Student_Form^ program = gcnew Student_Form(id_rola, Admin_Name, id, this);
 						program->ShowDialog();
+
 					}
 				}
 			}

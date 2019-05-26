@@ -34,16 +34,18 @@ namespace BLINDBANK {
 
 		}
 
-		Student_Form(const int role, String^ & Admin_Name, System::Windows::Forms::Form ^ _Form) :
+		Student_Form(const int role, String^ & Admin_Name, int id, System::Windows::Forms::Form ^ _Form) :
 			role(role),
 			Admin_Name(Admin_Name),
-			Logowanie_Form(_Form)
+			Logowanie_Form(_Form),
+			_id (id)
 		{
 			InitializeComponent();
 
 		}
 
 	protected:
+		int _id;
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
@@ -89,6 +91,13 @@ namespace BLINDBANK {
 	private: System::Windows::Forms::TabPage^  tabPage2;
 	private: System::Windows::Forms::Button^  button5;
 	private: System::Windows::Forms::DataGridView^  dgOceny;
+	private: System::Windows::Forms::TabPage^  tabPage3;
+	private: System::Windows::Forms::Button^  button6;
+	private: System::Windows::Forms::DataGridView^  dgGrupy;
+	private: System::Windows::Forms::Label^  label2;
+	private: System::Windows::Forms::Label^  label3;
+	private: System::Windows::Forms::Label^  label4;
+	private: System::Windows::Forms::Label^  label5;
 
 
 
@@ -128,6 +137,13 @@ namespace BLINDBANK {
 			this->tabPage2 = (gcnew System::Windows::Forms::TabPage());
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->dgOceny = (gcnew System::Windows::Forms::DataGridView());
+			this->tabPage3 = (gcnew System::Windows::Forms::TabPage());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->dgGrupy = (gcnew System::Windows::Forms::DataGridView());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgMain))->BeginInit();
@@ -135,6 +151,8 @@ namespace BLINDBANK {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPrace))->BeginInit();
 			this->tabPage2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgOceny))->BeginInit();
+			this->tabPage3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgGrupy))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// lblAdmin
@@ -142,10 +160,9 @@ namespace BLINDBANK {
 			this->lblAdmin->AutoSize = true;
 			this->lblAdmin->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblAdmin->Location = System::Drawing::Point(62, 7);
-			this->lblAdmin->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->lblAdmin->Location = System::Drawing::Point(83, 9);
 			this->lblAdmin->Name = L"lblAdmin";
-			this->lblAdmin->Size = System::Drawing::Size(0, 25);
+			this->lblAdmin->Size = System::Drawing::Size(0, 29);
 			this->lblAdmin->TabIndex = 4;
 			// 
 			// label1
@@ -153,10 +170,9 @@ namespace BLINDBANK {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(9, 7);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(12, 9);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(56, 25);
+			this->label1->Size = System::Drawing::Size(70, 29);
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"Witaj";
 			// 
@@ -169,10 +185,10 @@ namespace BLINDBANK {
 			this->dateTimePicker1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker1->Location = System::Drawing::Point(692, 6);
-			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(2);
+			this->dateTimePicker1->Location = System::Drawing::Point(923, 7);
+			this->dateTimePicker1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->Size = System::Drawing::Size(114, 23);
+			this->dateTimePicker1->Size = System::Drawing::Size(151, 26);
 			this->dateTimePicker1->TabIndex = 7;
 			this->dateTimePicker1->Value = System::DateTime(2019, 5, 2, 12, 16, 0, 0);
 			// 
@@ -180,10 +196,10 @@ namespace BLINDBANK {
 			// 
 			this->btnWYLOGUJ->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnWYLOGUJ->Location = System::Drawing::Point(582, 4);
-			this->btnWYLOGUJ->Margin = System::Windows::Forms::Padding(2);
+			this->btnWYLOGUJ->Location = System::Drawing::Point(776, 5);
+			this->btnWYLOGUJ->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnWYLOGUJ->Name = L"btnWYLOGUJ";
-			this->btnWYLOGUJ->Size = System::Drawing::Size(106, 25);
+			this->btnWYLOGUJ->Size = System::Drawing::Size(141, 31);
 			this->btnWYLOGUJ->TabIndex = 12;
 			this->btnWYLOGUJ->Text = L"Wyloguj";
 			this->btnWYLOGUJ->UseVisualStyleBackColor = true;
@@ -194,23 +210,25 @@ namespace BLINDBANK {
 			this->tabControl1->Controls->Add(this->tabPage1);
 			this->tabControl1->Controls->Add(this->Przeslij);
 			this->tabControl1->Controls->Add(this->tabPage2);
-			this->tabControl1->Location = System::Drawing::Point(13, 34);
-			this->tabControl1->Margin = System::Windows::Forms::Padding(2);
+			this->tabControl1->Controls->Add(this->tabPage3);
+			this->tabControl1->Location = System::Drawing::Point(17, 42);
+			this->tabControl1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabControl1->Name = L"tabControl1";
 			this->tabControl1->SelectedIndex = 0;
-			this->tabControl1->Size = System::Drawing::Size(796, 566);
+			this->tabControl1->Size = System::Drawing::Size(1061, 697);
 			this->tabControl1->TabIndex = 13;
 			// 
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->tabPage1->Controls->Add(this->label5);
 			this->tabPage1->Controls->Add(this->button3);
 			this->tabPage1->Controls->Add(this->dgMain);
-			this->tabPage1->Location = System::Drawing::Point(4, 22);
-			this->tabPage1->Margin = System::Windows::Forms::Padding(2);
+			this->tabPage1->Location = System::Drawing::Point(4, 25);
+			this->tabPage1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabPage1->Name = L"tabPage1";
-			this->tabPage1->Padding = System::Windows::Forms::Padding(2);
-			this->tabPage1->Size = System::Drawing::Size(788, 540);
+			this->tabPage1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->tabPage1->Size = System::Drawing::Size(1053, 668);
 			this->tabPage1->TabIndex = 0;
 			this->tabPage1->Text = L"Ekran G³ówny";
 			this->tabPage1->Click += gcnew System::EventHandler(this, &Student_Form::tabPage1_Click_1);
@@ -219,10 +237,10 @@ namespace BLINDBANK {
 			// 
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button3->Location = System::Drawing::Point(21, 437);
-			this->button3->Margin = System::Windows::Forms::Padding(2);
+			this->button3->Location = System::Drawing::Point(28, 538);
+			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(172, 73);
+			this->button3->Size = System::Drawing::Size(229, 90);
 			this->button3->TabIndex = 5;
 			this->button3->Text = L"Poka¿ prace";
 			this->button3->UseVisualStyleBackColor = true;
@@ -233,24 +251,26 @@ namespace BLINDBANK {
 			this->dgMain->AllowUserToAddRows = false;
 			this->dgMain->AllowUserToDeleteRows = false;
 			this->dgMain->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgMain->Location = System::Drawing::Point(6, 6);
+			this->dgMain->Location = System::Drawing::Point(8, 108);
+			this->dgMain->Margin = System::Windows::Forms::Padding(4);
 			this->dgMain->Name = L"dgMain";
 			this->dgMain->ReadOnly = true;
-			this->dgMain->Size = System::Drawing::Size(776, 409);
+			this->dgMain->Size = System::Drawing::Size(1035, 402);
 			this->dgMain->TabIndex = 0;
 			// 
 			// Przeslij
 			// 
 			this->Przeslij->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->Przeslij->Controls->Add(this->label4);
 			this->Przeslij->Controls->Add(this->button4);
 			this->Przeslij->Controls->Add(this->button2);
 			this->Przeslij->Controls->Add(this->button1);
 			this->Przeslij->Controls->Add(this->gdPrace);
-			this->Przeslij->Location = System::Drawing::Point(4, 22);
-			this->Przeslij->Margin = System::Windows::Forms::Padding(2);
+			this->Przeslij->Location = System::Drawing::Point(4, 25);
+			this->Przeslij->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Przeslij->Name = L"Przeslij";
-			this->Przeslij->Padding = System::Windows::Forms::Padding(2);
-			this->Przeslij->Size = System::Drawing::Size(788, 540);
+			this->Przeslij->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->Przeslij->Size = System::Drawing::Size(1053, 668);
 			this->Przeslij->TabIndex = 1;
 			this->Przeslij->Text = L"Przeslij Pracê Domow¹";
 			// 
@@ -258,10 +278,10 @@ namespace BLINDBANK {
 			// 
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button4->Location = System::Drawing::Point(28, 440);
-			this->button4->Margin = System::Windows::Forms::Padding(2);
+			this->button4->Location = System::Drawing::Point(37, 542);
+			this->button4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(148, 59);
+			this->button4->Size = System::Drawing::Size(197, 73);
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Poka¿ prace";
 			this->button4->UseVisualStyleBackColor = true;
@@ -271,10 +291,10 @@ namespace BLINDBANK {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button2->Location = System::Drawing::Point(489, 432);
-			this->button2->Margin = System::Windows::Forms::Padding(2);
+			this->button2->Location = System::Drawing::Point(652, 532);
+			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(285, 73);
+			this->button2->Size = System::Drawing::Size(380, 90);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Wyœlij";
 			this->button2->UseVisualStyleBackColor = true;
@@ -284,10 +304,10 @@ namespace BLINDBANK {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button1->Location = System::Drawing::Point(191, 432);
-			this->button1->Margin = System::Windows::Forms::Padding(2);
+			this->button1->Location = System::Drawing::Point(255, 532);
+			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(285, 73);
+			this->button1->Size = System::Drawing::Size(380, 90);
 			this->button1->TabIndex = 1;
 			this->button1->Text = L"Przeœlij plik";
 			this->button1->UseVisualStyleBackColor = true;
@@ -298,23 +318,25 @@ namespace BLINDBANK {
 			this->gdPrace->AllowUserToAddRows = false;
 			this->gdPrace->AllowUserToDeleteRows = false;
 			this->gdPrace->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->gdPrace->Location = System::Drawing::Point(4, 5);
-			this->gdPrace->Margin = System::Windows::Forms::Padding(2);
+			this->gdPrace->Location = System::Drawing::Point(5, 102);
+			this->gdPrace->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->gdPrace->Name = L"gdPrace";
 			this->gdPrace->ReadOnly = true;
 			this->gdPrace->RowTemplate->Height = 24;
-			this->gdPrace->Size = System::Drawing::Size(781, 407);
+			this->gdPrace->Size = System::Drawing::Size(1041, 405);
 			this->gdPrace->TabIndex = 0;
 			this->gdPrace->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Student_Form::dataGridView1_CellContentClick_1);
 			// 
 			// tabPage2
 			// 
 			this->tabPage2->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->tabPage2->Controls->Add(this->label3);
 			this->tabPage2->Controls->Add(this->button5);
 			this->tabPage2->Controls->Add(this->dgOceny);
-			this->tabPage2->Location = System::Drawing::Point(4, 22);
+			this->tabPage2->Location = System::Drawing::Point(4, 25);
+			this->tabPage2->Margin = System::Windows::Forms::Padding(4);
 			this->tabPage2->Name = L"tabPage2";
-			this->tabPage2->Size = System::Drawing::Size(788, 540);
+			this->tabPage2->Size = System::Drawing::Size(1053, 668);
 			this->tabPage2->TabIndex = 2;
 			this->tabPage2->Text = L"Oceny";
 			// 
@@ -322,9 +344,10 @@ namespace BLINDBANK {
 			// 
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
-			this->button5->Location = System::Drawing::Point(281, 488);
+			this->button5->Location = System::Drawing::Point(375, 601);
+			this->button5->Margin = System::Windows::Forms::Padding(4);
 			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(201, 49);
+			this->button5->Size = System::Drawing::Size(268, 60);
 			this->button5->TabIndex = 1;
 			this->button5->Text = L"Wyœwietl oceny";
 			this->button5->UseVisualStyleBackColor = true;
@@ -335,34 +358,121 @@ namespace BLINDBANK {
 			this->dgOceny->AllowUserToAddRows = false;
 			this->dgOceny->AllowUserToDeleteRows = false;
 			this->dgOceny->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgOceny->Location = System::Drawing::Point(4, 4);
+			this->dgOceny->Location = System::Drawing::Point(4, 113);
+			this->dgOceny->Margin = System::Windows::Forms::Padding(4);
 			this->dgOceny->Name = L"dgOceny";
 			this->dgOceny->ReadOnly = true;
-			this->dgOceny->Size = System::Drawing::Size(784, 478);
+			this->dgOceny->Size = System::Drawing::Size(1045, 480);
 			this->dgOceny->TabIndex = 0;
+			// 
+			// tabPage3
+			// 
+			this->tabPage3->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->tabPage3->Controls->Add(this->label2);
+			this->tabPage3->Controls->Add(this->button6);
+			this->tabPage3->Controls->Add(this->dgGrupy);
+			this->tabPage3->Location = System::Drawing::Point(4, 25);
+			this->tabPage3->Name = L"tabPage3";
+			this->tabPage3->Size = System::Drawing::Size(1053, 668);
+			this->tabPage3->TabIndex = 3;
+			this->tabPage3->Text = L"Moje Grupy";
+			// 
+			// button6
+			// 
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->button6->Location = System::Drawing::Point(360, 571);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(269, 79);
+			this->button6->TabIndex = 1;
+			this->button6->Text = L"Poka¿ grupy";
+			this->button6->UseVisualStyleBackColor = true;
+			this->button6->Click += gcnew System::EventHandler(this, &Student_Form::button6_Click_1);
+			// 
+			// dgGrupy
+			// 
+			this->dgGrupy->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgGrupy->Location = System::Drawing::Point(3, 103);
+			this->dgGrupy->Name = L"dgGrupy";
+			this->dgGrupy->RowTemplate->Height = 24;
+			this->dgGrupy->Size = System::Drawing::Size(1045, 451);
+			this->dgGrupy->TabIndex = 0;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label2->Location = System::Drawing::Point(348, 15);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(325, 69);
+			this->label2->TabIndex = 2;
+			this->label2->Text = L"Moje grupy";
+			this->label2->Click += gcnew System::EventHandler(this, &Student_Form::label2_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label3->Location = System::Drawing::Point(363, 18);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(335, 69);
+			this->label3->TabIndex = 2;
+			this->label3->Text = L"Moje oceny";
+			this->label3->Click += gcnew System::EventHandler(this, &Student_Form::label3_Click);
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label4->Location = System::Drawing::Point(243, 14);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(631, 69);
+			this->label4->TabIndex = 5;
+			this->label4->Text = L"Przeœlij pracê domow¹";
+			this->label4->Click += gcnew System::EventHandler(this, &Student_Form::label4_Click);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 36, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(238)));
+			this->label5->Location = System::Drawing::Point(332, 15);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(388, 69);
+			this->label5->TabIndex = 6;
+			this->label5->Text = L"Ekran g³ówny";
 			// 
 			// Student_Form
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(811, 604);
+			this->ClientSize = System::Drawing::Size(1081, 743);
 			this->Controls->Add(this->tabControl1);
 			this->Controls->Add(this->btnWYLOGUJ);
 			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->lblAdmin);
 			this->Controls->Add(this->label1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"Student_Form";
 			this->Text = L"Student";
 			this->Load += gcnew System::EventHandler(this, &Student_Form::Student_Form_Load);
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
+			this->tabPage1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgMain))->EndInit();
 			this->Przeslij->ResumeLayout(false);
+			this->Przeslij->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPrace))->EndInit();
 			this->tabPage2->ResumeLayout(false);
+			this->tabPage2->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgOceny))->EndInit();
+			this->tabPage3->ResumeLayout(false);
+			this->tabPage3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgGrupy))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -420,7 +530,7 @@ namespace BLINDBANK {
 		{
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.* FROM `uzytkownicy`, `grupy_uzytkownikow`, `praca_domowa` where `uzytkownicy`.`iduzytkownicy` =`grupy_uzytkownikow`.`iduzytkownika` and `praca_domowa`.`id_grupy` = `grupy_uzytkownikow`.`idgrupy`;", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`id_grupy` as `Numer grupy`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `praca_domowa`.`expire_date` as `Data oddania` FROM `uzytkownicy`, `grupy_uzytkownikow`, `praca_domowa` where `uzytkownicy`.`iduzytkownicy` =`grupy_uzytkownikow`.`iduzytkownika` and `praca_domowa`.`id_grupy` = `grupy_uzytkownikow`.`idgrupy`;", laczbaze);
 
 			try {
 
@@ -446,9 +556,39 @@ namespace BLINDBANK {
 
 		private: void pokaz_oceny(System::Windows::Forms::DataGridView^ siatka)
 		{
+			std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`title`, `praca_domowa`.`contents`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = 5;", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = "+id+";", laczbaze);
+
+			try {
+
+				MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+				moja->SelectCommand = zapytanie;
+
+				DataTable^ tabela = gcnew DataTable();
+				moja->Fill(tabela);
+
+				BindingSource^ zrodlo = gcnew BindingSource();
+				zrodlo->DataSource = tabela;
+				//	siatka->RowHeadersWidthSizeMode 
+				siatka->DataSource = zrodlo;
+				//siatka->Columns[2]->G = false;
+				laczbaze->Close();
+			}
+			catch (Exception^ komunikat)
+			{
+				MessageBox::Show(komunikat->Message);
+			}
+			//siatka->Columns[0]->Visible = false;
+		}
+
+		private: void pokaz_grupy(System::Windows::Forms::DataGridView^ siatka)
+		{
+			std::string id = std::to_string(_id);
+			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `idgrupy` as `ID Grupy` from `grupy_uzytkownikow` where `iduzytkownika` ="+id+";", laczbaze);
 
 			try {
 
@@ -497,6 +637,16 @@ private: System::Void button3_Click(System::Object^  sender, System::EventArgs^ 
 	pokaz_prace(dgMain);
 }
 private: System::Void button6_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void button6_Click_1(System::Object^  sender, System::EventArgs^  e) {
+	pokaz_grupy(dgGrupy);
+
+}
+private: System::Void label2_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void label3_Click(System::Object^  sender, System::EventArgs^  e) {
+}
+private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  e) {
 }
 };
 }
