@@ -427,7 +427,6 @@ namespace BLINDBANK {
 						int id = odczytanie->GetInt32(0);
 						Wykladowca_Form^ program = gcnew Wykladowca_Form(id_rola, Admin_Name,id,this);
 						program->ShowDialog();
-						
 					}
 
 				}
