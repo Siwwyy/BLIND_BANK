@@ -58,7 +58,7 @@ namespace BLINDBANK {
 
 		}
 
-		_FTP(System::String^ & file_path) :
+		_FTP(System::String^ file_path) :
 			file_path(file_path),
 			from_file("")
 		{
