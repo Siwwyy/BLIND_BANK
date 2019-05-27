@@ -1,6 +1,7 @@
 #pragma once
 //#include "Logowanie.h"
 #include "Configure_String.hpp"
+#include <typeinfo>
 
 namespace BLINDBANK {
 
@@ -526,6 +527,45 @@ namespace BLINDBANK {
 		// OWN FUNCTIONS
 		//		
 
+		private: void Pokaz_plik(System::Windows::Forms::DataGridView^ siatka,System::String^ file_path, System::String^ from_file)
+		{
+			try {
+
+				//DataTable^ tabela = gcnew DataTable();
+				//tabela.Add
+				////moja->Fill(tabela);
+
+				//BindingSource^ zrodlo = gcnew BindingSource();
+				//zrodlo->DataSource = tabela;
+				//siatka->DataSource = zrodlo;
+				siatka->Columns->Clear();
+				siatka->Columns->Add("col1", "Sciezka pliku");
+				siatka->Columns->Add("col2", "Zawartosc pliku");
+
+				DataTable^ table = gcnew DataTable("MyTable");
+				table->Columns->Add("Sciezka pliku");
+				table->Columns->Add("Zawartosc pliku");
+
+				siatka->Rows->Add();
+				siatka->Columns[0]->Width = (file_path->Length * 5);
+				siatka->Columns[1]->Width = 600;
+				siatka[0, 0]->Value = file_path;
+				siatka[1, 0]->Value = from_file;
+				/*siatka->Columns[0] = table->Rows[0]->;
+				siatka->Rows->Add();*/
+			
+			}
+			catch (Exception^ komunikat)
+			{
+				MessageBox::Show(komunikat->Message);
+			}
+			//siatka->Columns[0]->Visible = false;
+		}
+
+
+
+
+
 		private: void pokaz_prace(System::Windows::Forms::DataGridView^ siatka)
 		{
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
@@ -559,7 +599,7 @@ namespace BLINDBANK {
 			std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = "+id+";", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = "+_id+";", laczbaze);
 
 			try {
 
@@ -588,7 +628,7 @@ namespace BLINDBANK {
 			std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `idgrupy` as `ID Grupy` from `grupy_uzytkownikow` where `iduzytkownika` ="+id+";", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `idgrupy` as `ID Grupy` from `grupy_uzytkownikow` where `iduzytkownika` ="+_id+";", laczbaze);
 
 			try {
 
@@ -618,7 +658,30 @@ private: System::Void dataGridView1_CellContentClick(System::Object^  sender, Sy
 }
 private: System::Void dataGridView1_CellContentClick_1(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 }
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	Stream^ mystream;
+	OpenFileDialog^ openfile = gcnew OpenFileDialog;
+
+	if (openfile->ShowDialog() == System::Windows::Forms::DialogResult::OK)
+	{
+		if ((mystream = openfile->OpenFile()) != nullptr)
+		{
+			String^ file_path = openfile->InitialDirectory + openfile->FileName;
+			String^ from_file = "";
+
+			//MessageBox::Show(file_path);
+
+			mystream->Close();
+
+			_FTP my_file_reader(file_path);
+			from_file = my_file_reader.get_from_file();
+			Pokaz_plik(gdPrace,file_path,from_file);
+			//this->richtest->Text = my_file_reader.get_from_file();
+		}
+	}
+
+
 }
 private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 }
