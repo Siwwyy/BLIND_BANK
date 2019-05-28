@@ -361,6 +361,8 @@ namespace BLINDBANK {
 #pragma endregion
 		////ADD YOUR CODE HERE BELOW
 
+		
+
 	private: System::Void button2_Click_1(System::Object^  sender, System::EventArgs^  e)
 	{
 		//Close the form
@@ -373,95 +375,104 @@ namespace BLINDBANK {
 
 	private: System::Void btnZaloguj_Click_1(System::Object^  sender, System::EventArgs^  e) 
 	{
-		//Here add mysql reader
-		//String^ konfiguracja = L"datasource=81.171.31.230;port=3306;username=blindbankdb;password=Qwerty123;database=blindbank_db";
-		//String^ konfiguracja = L"datasource=81.171.31.230;port=3306;username=blindbankdb@127.0.0.1;password=Qwerty123;database=blindbank_db";
-		//String^ konfiguracja = L"datasource=remotemysql.com;port=3306;username=aUy3ZvnM7k;password=wUMpRMvSyN;database=aUy3ZvnM7k";
-		//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=gabinet";
-
-		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
-		//here for us we will be selecting the role, for example if role == "Administrator" open the administrator form
-		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id FROM uzytkownik WHERE uzytkownik_nazwa = '" + txtIndex->Text + "' AND haslo = PASSWORD('" + txtHaslo->Text + "');", laczbaze);
-		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT rola_idrola FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "' AND Haslo_Uzytkownika = '" + txtHaslo->Text + "';", laczbaze);
-		MySqlDataReader^ odczytanie;
-
-		try {
-			laczbaze->Open();
-			odczytanie = zapytanie->ExecuteReader();
-
-			if (odczytanie->Read())
-			{
-				int id_rola = odczytanie->GetInt32(0);
-
-				//below, change it to: ROLE == ADMINISTRATOR for example open the administrator form
-				if (id_rola == 1)
-				{
-					odczytanie->Close();
-
-					MySqlCommand^ zapytanie_admin_name = gcnew MySqlCommand("SELECT Imie_Uzytkownika FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
-					odczytanie = zapytanie_admin_name->ExecuteReader();
-					if (odczytanie->Read())
-					{
-						String^ Admin_Name = odczytanie->GetString(0);
-						this->Visible = false;
-						Admin_Form^ program = gcnew Admin_Form(id_rola, Admin_Name,this);
-						program->ShowDialog();
-						
-					}
-				}
-				else if (id_rola == 2)
-				{
-					odczytanie->Close();
-
-					MySqlCommand^ zapytanie_admin_name = gcnew MySqlCommand("SELECT Imie_Uzytkownika FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
-					odczytanie = zapytanie_admin_name->ExecuteReader();
-					
-					if (odczytanie->Read())
-					{
-						String^ Admin_Name = odczytanie->GetString(0);
-						this->Visible = false;
-						odczytanie->Close();
-						zapytanie_admin_name = gcnew MySqlCommand("SELECT iduzytkownicy FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
-						odczytanie = zapytanie_admin_name->ExecuteReader();
-						odczytanie->Read();
-						int id = odczytanie->GetInt32(0);
-						Wykladowca_Form^ program = gcnew Wykladowca_Form(id_rola, Admin_Name,id,this);
-						program->ShowDialog();
-					}
-
-				}
-				else if (id_rola == 3)
-				{
-					odczytanie->Close();
-
-					MySqlCommand^ zapytanie_admin_name = gcnew MySqlCommand("SELECT Imie_Uzytkownika FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
-					odczytanie = zapytanie_admin_name->ExecuteReader();
-					if (odczytanie->Read())
-					{
-						String^ Admin_Name = odczytanie->GetString(0);
-						this->Visible = false;
-
-						odczytanie->Close();
-						zapytanie_admin_name = gcnew MySqlCommand("SELECT iduzytkownicy FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
-						odczytanie = zapytanie_admin_name->ExecuteReader();
-						odczytanie->Read();
-						int id = odczytanie->GetInt32(0);
-						Student_Form^ program = gcnew Student_Form(id_rola, Admin_Name, id, this);
-						program->ShowDialog();
-
-					}
-				}
-			}
-			else
-			{
-				MessageBox::Show("Bledna nazwa uzytkownika lub niepoprawne haslo", "UWAGA!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			}
-		}
-		catch (Exception^ ex)
+		if (SQL_CONFIGURATION::get_datasource() == "1")
 		{
-			MessageBox::Show(ex->Message);
+			MessageBox::Show("PROSZE UZUPELNIC POPRAWNE DANE LOGOWANIA DO BAZY DANYCH!!", "UWAGA!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			this->Close();
 		}
-		laczbaze->Close();
+		else
+		{
+
+			//Here add mysql reader
+			//String^ konfiguracja = L"datasource=81.171.31.230;port=3306;username=blindbankdb;password=Qwerty123;database=blindbank_db";
+			//String^ konfiguracja = L"datasource=81.171.31.230;port=3306;username=blindbankdb@127.0.0.1;password=Qwerty123;database=blindbank_db";
+			//String^ konfiguracja = L"datasource=remotemysql.com;port=3306;username=aUy3ZvnM7k;password=wUMpRMvSyN;database=aUy3ZvnM7k";
+			//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=gabinet";
+
+			MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+			//here for us we will be selecting the role, for example if role == "Administrator" open the administrator form
+			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id FROM uzytkownik WHERE uzytkownik_nazwa = '" + txtIndex->Text + "' AND haslo = PASSWORD('" + txtHaslo->Text + "');", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT rola_idrola FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "' AND Haslo_Uzytkownika = '" + txtHaslo->Text + "';", laczbaze);
+			MySqlDataReader^ odczytanie;
+
+			try {
+				laczbaze->Open();
+				odczytanie = zapytanie->ExecuteReader();
+
+				if (odczytanie->Read())
+				{
+					int id_rola = odczytanie->GetInt32(0);
+
+					//below, change it to: ROLE == ADMINISTRATOR for example open the administrator form
+					if (id_rola == 1)
+					{
+						odczytanie->Close();
+
+						MySqlCommand^ zapytanie_admin_name = gcnew MySqlCommand("SELECT Imie_Uzytkownika FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
+						odczytanie = zapytanie_admin_name->ExecuteReader();
+						if (odczytanie->Read())
+						{
+							String^ Admin_Name = odczytanie->GetString(0);
+							this->Visible = false;
+							Admin_Form^ program = gcnew Admin_Form(id_rola, Admin_Name, this);
+							program->ShowDialog();
+
+						}
+					}
+					else if (id_rola == 2)
+					{
+						odczytanie->Close();
+
+						MySqlCommand^ zapytanie_admin_name = gcnew MySqlCommand("SELECT Imie_Uzytkownika FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
+						odczytanie = zapytanie_admin_name->ExecuteReader();
+
+						if (odczytanie->Read())
+						{
+							String^ Admin_Name = odczytanie->GetString(0);
+							this->Visible = false;
+							odczytanie->Close();
+							zapytanie_admin_name = gcnew MySqlCommand("SELECT iduzytkownicy FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
+							odczytanie = zapytanie_admin_name->ExecuteReader();
+							odczytanie->Read();
+							int id = odczytanie->GetInt32(0);
+							Wykladowca_Form^ program = gcnew Wykladowca_Form(id_rola, Admin_Name, id, this);
+							program->ShowDialog();
+						}
+
+					}
+					else if (id_rola == 3)
+					{
+						odczytanie->Close();
+
+						MySqlCommand^ zapytanie_admin_name = gcnew MySqlCommand("SELECT Imie_Uzytkownika FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
+						odczytanie = zapytanie_admin_name->ExecuteReader();
+						if (odczytanie->Read())
+						{
+							String^ Admin_Name = odczytanie->GetString(0);
+							this->Visible = false;
+
+							odczytanie->Close();
+							zapytanie_admin_name = gcnew MySqlCommand("SELECT iduzytkownicy FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtIndex->Text + "';", laczbaze);
+							odczytanie = zapytanie_admin_name->ExecuteReader();
+							odczytanie->Read();
+							int id = odczytanie->GetInt32(0);
+							Student_Form^ program = gcnew Student_Form(id_rola, Admin_Name, id, this);
+							program->ShowDialog();
+
+						}
+					}
+				}
+				else
+				{
+					MessageBox::Show("Bledna nazwa uzytkownika lub niepoprawne haslo", "UWAGA!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				}
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show(ex->Message);
+			}
+			laczbaze->Close();
+		}
 	}
 
 

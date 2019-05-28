@@ -49,8 +49,6 @@ namespace BLINDBANK {
 			}
 		}
 
-		
-
 	public:
 		_FTP():
 			from_file("")
@@ -63,6 +61,33 @@ namespace BLINDBANK {
 			from_file("")
 		{
 			read_file();
+		}
+
+		static System::String^ read_configure_string(System::String^ file_path, const int line_number)
+		{
+			try
+			{
+				StreamReader^ reader = gcnew StreamReader(file_path);
+				System::String^ line = "";
+				static int i = 0;
+				while (i <= 6)
+				{
+					line = "";
+					line = reader->ReadLine();
+					if (i == line_number)
+					{
+						i = 0;
+						return line;
+						break;
+					}
+					++i;
+				}
+				reader->Close();
+			}
+			catch (Exception^ e)
+			{
+				Console::WriteLine(L"Exception: {0}", e->Message);
+			}
 		}
 
 		static System::Void write_to_file(System::String^ to_file, System::String^ file_path)
