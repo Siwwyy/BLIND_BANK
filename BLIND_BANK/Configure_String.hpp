@@ -21,11 +21,11 @@ namespace BLINDBANK {
 			/*System::String^ file = L"DB_CONNECTION.txt";
 			_FTP^ Obj = gcnew _FTP(file);*/
 			//static String^ konfiguracja = L"datasource=remotemysql.com;port=3306;username=aUy3ZvnM7k;password=wUMpRMvSyN;database=aUy3ZvnM7k";
-			static String^ datasource = _FTP::read_configure_string("DB_CONNECTION.txt",0);
-			static String^ port = _FTP::read_configure_string("DB_CONNECTION.txt",1);
-			static String^ username = _FTP::read_configure_string("DB_CONNECTION.txt",2);
-			static String^ password = _FTP::read_configure_string("DB_CONNECTION.txt",3);
-			static String^ database = _FTP::read_configure_string("DB_CONNECTION.txt",4);
+			static String^ datasource = _FTP::read_configure_string("DB_CONNECTION.txt",0);	//the number means position in file
+			static String^ port = _FTP::read_configure_string("DB_CONNECTION.txt",1);	//the number means position in file
+			static String^ username = _FTP::read_configure_string("DB_CONNECTION.txt",2);//the number means position in file
+			static String^ password = _FTP::read_configure_string("DB_CONNECTION.txt",3);//the number means position in file
+			static String^ database = _FTP::read_configure_string("DB_CONNECTION.txt",4);//the number means position in file
 			static System::String^ konfiguracja = L"datasource=" + datasource + ";port=" + port + ";username=" + username + ";password=" + password + ";database=" + database + "";
 
 		public:
@@ -34,14 +34,14 @@ namespace BLINDBANK {
 
 			}
 
-		/*	SQL_CONFIGURATION(System::String^ datasource, System::String^ port, System::String^ username, System::String^ password, System::String^ database)
+			SQL_CONFIGURATION(System::String^ datasource, System::String^ port, System::String^ username, System::String^ password, System::String^ database)
 			{
 				this->datasource = datasource;
 				this->port = port;
 				this->username = username;
 				this->password = password;
 				this->database = database;
-			}*/
+			}
 
 			static String^ get_konfiguracja()
 			{
