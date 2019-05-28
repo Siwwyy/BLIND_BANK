@@ -158,6 +158,7 @@ namespace BLINDBANK {
 		int id_osoby;
 		cliext::vector<String^> nazwapliku;
 		cliext::vector<String^> calyplik;
+		String^ nazwa;
 
 
 	private: System::Windows::Forms::DateTimePicker^  dateTimePicker1;
@@ -205,6 +206,7 @@ private: System::Windows::Forms::Label^  lbProfilNazwisko;
 private: System::Windows::Forms::Label^  lbProfilImie;
 private: System::Windows::Forms::Label^  label8;
 private: System::Windows::Forms::Label^  label7;
+private: System::Windows::Forms::Button^  btnUsun;
 
 
 
@@ -341,6 +343,7 @@ private: System::Windows::Forms::Label^  label7;
 				 this->label3 = (gcnew System::Windows::Forms::Label());
 				 this->label2 = (gcnew System::Windows::Forms::Label());
 				 this->combobox1 = (gcnew System::Windows::Forms::ComboBox());
+				 this->btnUsun = (gcnew System::Windows::Forms::Button());
 				 this->tabControl1->SuspendLayout();
 				 this->Grupy->SuspendLayout();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPOKAZGRUPYGRUPY))->BeginInit();
@@ -471,6 +474,7 @@ private: System::Windows::Forms::Label^  label7;
 				 // PraceDomowe
 				 // 
 				 this->PraceDomowe->BackColor = System::Drawing::SystemColors::InactiveCaption;
+				 this->PraceDomowe->Controls->Add(this->btnUsun);
 				 this->PraceDomowe->Controls->Add(this->btnDOWNLOAD);
 				 this->PraceDomowe->Controls->Add(this->dgPLIKI);
 				 this->PraceDomowe->Controls->Add(this->btnSubmitOcena);
@@ -495,10 +499,10 @@ private: System::Windows::Forms::Label^  label7;
 				 // 
 				 // btnDOWNLOAD
 				 // 
-				 this->btnDOWNLOAD->Location = System::Drawing::Point(271, 582);
+				 this->btnDOWNLOAD->Location = System::Drawing::Point(182, 578);
 				 this->btnDOWNLOAD->Margin = System::Windows::Forms::Padding(4);
 				 this->btnDOWNLOAD->Name = L"btnDOWNLOAD";
-				 this->btnDOWNLOAD->Size = System::Drawing::Size(295, 82);
+				 this->btnDOWNLOAD->Size = System::Drawing::Size(218, 87);
 				 this->btnDOWNLOAD->TabIndex = 13;
 				 this->btnDOWNLOAD->Text = L"Pobierz pliki";
 				 this->btnDOWNLOAD->UseVisualStyleBackColor = true;
@@ -585,7 +589,7 @@ private: System::Windows::Forms::Label^  label7;
 				 this->lbCONTENT->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
 				 this->lbCONTENT->Location = System::Drawing::Point(773, 76);
 				 this->lbCONTENT->Name = L"lbCONTENT";
-				 this->lbCONTENT->Size = System::Drawing::Size(103, 29);
+				 this->lbCONTENT->Size = System::Drawing::Size(83, 29);
 				 this->lbCONTENT->TabIndex = 5;
 				 this->lbCONTENT->Text = L"Treœæ:";
 				 // 
@@ -607,7 +611,7 @@ private: System::Windows::Forms::Label^  label7;
 				 this->lbTITLE->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
 				 this->lbTITLE->Location = System::Drawing::Point(773, 6);
 				 this->lbTITLE->Name = L"lbTITLE";
-				 this->lbTITLE->Size = System::Drawing::Size(77, 29);
+				 this->lbTITLE->Size = System::Drawing::Size(75, 29);
 				 this->lbTITLE->TabIndex = 3;
 				 this->lbTITLE->Text = L"Tytu³:";
 				 // 
@@ -626,7 +630,7 @@ private: System::Windows::Forms::Label^  label7;
 				 this->btnPOKAZPRACE->Location = System::Drawing::Point(8, 578);
 				 this->btnPOKAZPRACE->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				 this->btnPOKAZPRACE->Name = L"btnPOKAZPRACE";
-				 this->btnPOKAZPRACE->Size = System::Drawing::Size(256, 87);
+				 this->btnPOKAZPRACE->Size = System::Drawing::Size(167, 87);
 				 this->btnPOKAZPRACE->TabIndex = 1;
 				 this->btnPOKAZPRACE->Text = L"Poka¿ prace domowe";
 				 this->btnPOKAZPRACE->UseVisualStyleBackColor = true;
@@ -789,7 +793,7 @@ private: System::Windows::Forms::Label^  label7;
 				 this->label4->AutoSize = true;
 				 this->label4->Location = System::Drawing::Point(492, 162);
 				 this->label4->Name = L"label4";
-				 this->label4->Size = System::Drawing::Size(47, 20);
+				 this->label4->Size = System::Drawing::Size(45, 20);
 				 this->label4->TabIndex = 4;
 				 this->label4->Text = L"Tytu³";
 				 // 
@@ -828,6 +832,16 @@ private: System::Windows::Forms::Label^  label7;
 				 this->combobox1->Name = L"combobox1";
 				 this->combobox1->Size = System::Drawing::Size(217, 28);
 				 this->combobox1->TabIndex = 0;
+				 // 
+				 // btnUsun
+				 // 
+				 this->btnUsun->Location = System::Drawing::Point(407, 578);
+				 this->btnUsun->Name = L"btnUsun";
+				 this->btnUsun->Size = System::Drawing::Size(158, 87);
+				 this->btnUsun->TabIndex = 14;
+				 this->btnUsun->Text = L"Usuñ";
+				 this->btnUsun->UseVisualStyleBackColor = true;
+				 this->btnUsun->Click += gcnew System::EventHandler(this, &Wykladowca_Form::btnUsun_Click);
 				 // 
 				 // Wykladowca_Form
 				 // 
@@ -1115,6 +1129,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			
 			if (e->RowIndex >= 0 && dgPOKAZPRACE->Rows[e->RowIndex]->Cells[0]->Value != dgPOKAZPRACE->Rows[e->RowIndex]->Cells[1]->Value)
 			{
+				nazwa = Convert::ToString(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[4]->Value);
 				id_rekordu = Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[0]->Value);
 			
 
@@ -1122,9 +1137,6 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			lbTITLEC->Text = Convert::ToString(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[4]->Value);
 
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
-			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika as Imie, Nazwisko_Uzytkownika as Nazwisko , Unique_Index_Number as Numer Indexu, Email_Uzytkownika as E-mail, Haslo_Uzytkownika as Haslo, rola_idrola as Rola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
-			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika, Nazwisko_Uzytkownika, Unique_Index_Number, Email_Uzytkownika, Haslo_Uzytkownika , rola_idrola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
-			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika as 'Imie', Nazwisko_Uzytkownika as 'Nazwisko', ocena as 'Ocena' FROM uzytkownicy, Ocena, grupy_uzytkownikow g, praca_domowa WHERE Ocena.id_pd ='" + id_rekordu + "' and praca_domowa.id_grupy = '" + Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[1]->Value) + "' and g.idgrupy = praca_domowa.id_grupy and g.iduzytkownika = iduzytkownicy and g.iduzytkownika != "+id_wykladowca+" and Ocena.id_osoby = iduzytkownicy  ;", laczbaze);
 			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT iduzytkownicy, Imie_Uzytkownika as 'Imie', Nazwisko_Uzytkownika as 'Nazwisko', ocena as 'Ocena' FROM uzytkownicy, Ocena, praca_domowa WHERE Ocena.id_pd ='"+id_rekordu+"' and praca_domowa.id_grupy = '" + Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[1]->Value) + "' and uzytkownicy.iduzytkownicy != " + id_wykladowca + " and Ocena.id_osoby = iduzytkownicy and Ocena.id_pd = praca_domowa.pk;", laczbaze);
 
 			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
@@ -1138,7 +1150,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 			dgPOKAZPRACE->DataSource = zrodlo;
 			taczable = false;
 			dgPOKAZPRACE->Columns[0]->Visible = false;
-			id_osoby = Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[0]->Value);
+			//id_osoby = Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[0]->Value);
 			laczbaze->Close();
 
 			}
@@ -1260,5 +1272,32 @@ private: System::Void btnSubmitOcena_Click(System::Object^  sender, System::Even
 		++number_folder;
 		//system("cd Prace_Domowe");
 	}
+private: System::Void btnUsun_Click(System::Object^  sender, System::EventArgs^  e) 
+{
+	if (id_rekordu != -1 && nazwa != "")
+	{
+		if (MessageBox::Show("Czy na pewno chcesz usunac pozycje "+nazwa, "Uwaga!", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes)
+		{
+			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ polecenie = laczbaze->CreateCommand();
+			MySqlTransaction^ transakcja;
+
+			laczbaze->Open();
+			transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+			polecenie->Connection = laczbaze;
+			polecenie->Transaction = transakcja;
+
+			polecenie->CommandText = "DELETE FROM praca_domowa WHERE pk = '" + id_rekordu + "'";
+			polecenie->ExecuteNonQuery();
+			transakcja->Commit();
+			MessageBox::Show("Usunieto grupe", "Komunikat", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			btnPOKAZPRACE_Click(nullptr,nullptr);
+		}
+	}
+}
+
+
+
 };
 }
