@@ -57,6 +57,8 @@ namespace BLINDBANK {
 	private: System::Windows::Forms::Button^  button7;
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::RichTextBox^  richTextBox1;
+	private: System::Windows::Forms::Button^  button8;
+
 	protected:
 		String^ _nazwapd;
 
@@ -162,6 +164,7 @@ namespace BLINDBANK {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->dgGrupy = (gcnew System::Windows::Forms::DataGridView());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgMain))->BeginInit();
@@ -242,6 +245,7 @@ namespace BLINDBANK {
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::SystemColors::InactiveCaption;
+			this->tabPage1->Controls->Add(this->button8);
 			this->tabPage1->Controls->Add(this->label6);
 			this->tabPage1->Controls->Add(this->richTextBox1);
 			this->tabPage1->Controls->Add(this->button7);
@@ -254,7 +258,7 @@ namespace BLINDBANK {
 			this->tabPage1->Padding = System::Windows::Forms::Padding(2);
 			this->tabPage1->Size = System::Drawing::Size(788, 540);
 			this->tabPage1->TabIndex = 0;
-			this->tabPage1->Text = L"Ekran G³ówny";
+			this->tabPage1->Text = L"Ekran Glowny";
 			this->tabPage1->Click += gcnew System::EventHandler(this, &Student_Form::tabPage1_Click_1);
 			// 
 			// label6
@@ -266,7 +270,7 @@ namespace BLINDBANK {
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(195, 24);
 			this->label6->TabIndex = 9;
-			this->label6->Text = L"Treœæ wybranej pracy:";
+			this->label6->Text = L"Treœc wybranej pracy:";
 			this->label6->Visible = false;
 			this->label6->Click += gcnew System::EventHandler(this, &Student_Form::label6_Click);
 			// 
@@ -287,7 +291,7 @@ namespace BLINDBANK {
 			this->button7->Name = L"button7";
 			this->button7->Size = System::Drawing::Size(172, 73);
 			this->button7->TabIndex = 7;
-			this->button7->Text = L"Poka¿ wys³ane prace";
+			this->button7->Text = L"Pokaz wyslane prace";
 			this->button7->UseVisualStyleBackColor = true;
 			this->button7->Click += gcnew System::EventHandler(this, &Student_Form::button7_Click);
 			// 
@@ -301,7 +305,7 @@ namespace BLINDBANK {
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(313, 55);
 			this->label5->TabIndex = 6;
-			this->label5->Text = L"Ekran g³ówny";
+			this->label5->Text = L"Ekran glowny";
 			// 
 			// button3
 			// 
@@ -312,7 +316,7 @@ namespace BLINDBANK {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(172, 73);
 			this->button3->TabIndex = 5;
-			this->button3->Text = L"Poka¿ prace";
+			this->button3->Text = L"Pokaz prace";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &Student_Form::button3_Click);
 			// 
@@ -343,7 +347,7 @@ namespace BLINDBANK {
 			this->Przeslij->Padding = System::Windows::Forms::Padding(2);
 			this->Przeslij->Size = System::Drawing::Size(788, 540);
 			this->Przeslij->TabIndex = 1;
-			this->Przeslij->Text = L"Przeslij Pracê Domow¹";
+			this->Przeslij->Text = L"Przeslij Prace Domowa";
 			// 
 			// dgAKTUALNYPLIK
 			// 
@@ -369,7 +373,7 @@ namespace BLINDBANK {
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(507, 55);
 			this->label4->TabIndex = 5;
-			this->label4->Text = L"Przeœlij pracê domow¹";
+			this->label4->Text = L"Przeœlij prace domowa";
 			this->label4->Click += gcnew System::EventHandler(this, &Student_Form::label4_Click);
 			// 
 			// button4
@@ -381,7 +385,7 @@ namespace BLINDBANK {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(148, 59);
 			this->button4->TabIndex = 4;
-			this->button4->Text = L"Poka¿ prace";
+			this->button4->Text = L"Pokaz prace";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &Student_Form::button4_Click);
 			// 
@@ -509,7 +513,7 @@ namespace BLINDBANK {
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(202, 64);
 			this->button6->TabIndex = 1;
-			this->button6->Text = L"Poka¿ grupy";
+			this->button6->Text = L"Pokaz grupy";
 			this->button6->UseVisualStyleBackColor = true;
 			this->button6->Click += gcnew System::EventHandler(this, &Student_Form::button6_Click_1);
 			// 
@@ -522,6 +526,18 @@ namespace BLINDBANK {
 			this->dgGrupy->RowTemplate->Height = 24;
 			this->dgGrupy->Size = System::Drawing::Size(784, 366);
 			this->dgGrupy->TabIndex = 0;
+			// 
+			// button8
+			// 
+			this->button8->Enabled = false;
+			this->button8->Location = System::Drawing::Point(596, 315);
+			this->button8->Name = L"button8";
+			this->button8->Size = System::Drawing::Size(167, 23);
+			this->button8->TabIndex = 10;
+			this->button8->Text = L"Zatwierdz wybrana prace";
+			this->button8->UseVisualStyleBackColor = true;
+			this->button8->Visible = false;
+			this->button8->Click += gcnew System::EventHandler(this, &Student_Form::button8_Click);
 			// 
 			// Student_Form
 			// 
@@ -679,7 +695,7 @@ namespace BLINDBANK {
 		{
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`pk` as `Numer grupy`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `praca_domowa`.`expire_date` as `Data oddania` FROM `uzytkownicy`, `grupy_uzytkownikow`, `praca_domowa` where `uzytkownicy`.`iduzytkownicy` =`grupy_uzytkownikow`.`iduzytkownika` and `praca_domowa`.`id_grupy` = `grupy_uzytkownikow`.`idgrupy`;", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`pk` as `Numer grupy`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœc`, `praca_domowa`.`expire_date` as `Data oddania` FROM `uzytkownicy`, `grupy_uzytkownikow`, `praca_domowa` where `uzytkownicy`.`iduzytkownicy` =`grupy_uzytkownikow`.`iduzytkownika` and `praca_domowa`.`id_grupy` = `grupy_uzytkownikow`.`idgrupy`;", laczbaze);
 
 			try {
 
@@ -708,7 +724,7 @@ namespace BLINDBANK {
 			std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`pk`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = "+_id+";", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`pk`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœc`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = "+_id+";", laczbaze);
 
 			try {
 
@@ -737,7 +753,7 @@ namespace BLINDBANK {
 			std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `idgrupy` as `ID Grupy` from `grupy_uzytkownikow` where `iduzytkownika` ="+_id+";", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `idgrupy` as `ID Grupy` from `grupy_uzytkownikow` where `iduzytkownika` ='"+_id+"';", laczbaze);
 
 			try {
 
@@ -788,10 +804,10 @@ namespace BLINDBANK {
 					// wstaw do bazy danych
 
 					if (button2->Text == "Wyœlij") {
-						polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", " + " \"" + _nazwapd + "\", \"" + _fromFile + "\")";
+						polecenie->CommandText = "insert into `pliki` values ( NULL, '" + _id + "','" + _idpd + "', " + " '" + _nazwapd + "', '" + _fromFile + "')";
 					}
 					else {
-						polecenie->CommandText = " update table set plik = \"" + _fromFile + "\" where id_osoby = " + _id + " and id_pd = " + _idpd + ";";
+						polecenie->CommandText = "update `pliki` set `plik` = '" + _fromFile + "' where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
 					}
 
 					polecenie->ExecuteNonQuery();
@@ -802,7 +818,7 @@ namespace BLINDBANK {
 					laczbaze->Close();
 				
 				
-					MessageBox::Show("Wys³ano pracê.");
+					MessageBox::Show("Wyslano prace.");
 
 				}
 				catch (Exception^ komunikat)
@@ -816,7 +832,7 @@ namespace BLINDBANK {
 			
 			std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from `pliki` where `id_osoby` = " + _id + " and `id_pd` = " + _idpd + ";", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from `pliki` where `id_osoby` = '" + _id + "' and `id_pd` = '" + _idpd + "';", laczbaze);
 
 			try {
 
@@ -831,7 +847,7 @@ namespace BLINDBANK {
 
 				if (tabela->Rows->Count != 0) {
 					// update
-					button2->Text = "Zamieñ";
+					button2->Text = "Zamien";
 				}
 				else {
 					button2->Text = "Wyœlij";
@@ -858,7 +874,7 @@ private: System::Void gdPrace_CellContentClick(System::Object^  sender, System::
 	_nazwapd = Convert::ToString(gdPrace->Rows[e->RowIndex]->Cells[1]->Value);
 
 	MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
-	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from `pliki` where `zatwierdzona` = 1 and `id_osoby` = " + _id + " and `id_pd` = \"" + _idpd + "\";", laczbaze);
+	MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from `pliki` where `zatwierdzona` = 1 and `id_osoby` = '" + _id + "' and `id_pd` = '" + _idpd + "';", laczbaze);
 
 	try {
 
@@ -981,16 +997,22 @@ private: System::Void dgMain_CellContentClick(System::Object^  sender, System::W
 	if (jk) {
 		label6->Visible = true;
 		richTextBox1->Visible = true;
+		button8->Visible = true;
 
 		String^ fileStr;
-
 		fileStr = Convert::ToString(dgMain->Rows[e->RowIndex]->Cells[0]->Value);
 
 		richTextBox1->Text = fileStr;
+
+
+		button8->Enabled = !Convert::ToBoolean(dgMain->Rows[e->RowIndex]->Cells[3]->Value);
+
+
 	}
 	else {
 		label6->Visible = false;
 		richTextBox1->Visible = false;
+		button8->Visible = false;
 	}
 
 
@@ -1001,6 +1023,42 @@ private: System::Void dgMain_CellContentClick(System::Object^  sender, System::W
 }
 private: System::Void label6_Click(System::Object^  sender, System::EventArgs^  e) {
 
+}
+private: System::Void button8_Click(System::Object^  sender, System::EventArgs^  e) {
+
+	// zaktualizuj zatwierdzonoœc
+	MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+	MySqlCommand^ polecenie = laczbaze->CreateCommand();
+	MySqlTransaction^ transakcja;
+
+	laczbaze->Open();
+	transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+	polecenie->Connection = laczbaze;
+	polecenie->Transaction = transakcja;
+
+
+	try {
+
+		polecenie->CommandText = "update pliki set zatwierdzona = 1 where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
+		
+		button8->Enabled = false;
+
+		polecenie->ExecuteNonQuery();
+		transakcja->Commit();
+
+
+
+		laczbaze->Close();
+
+
+		MessageBox::Show("Zatwierdzono prace.");
+
+	}
+	catch (Exception^ komunikat)
+	{
+		MessageBox::Show(komunikat->Message);
+	}
 }
 };
 }
