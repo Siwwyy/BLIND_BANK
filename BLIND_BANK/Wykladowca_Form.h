@@ -965,7 +965,7 @@ private: System::Windows::Forms::Button^  btnUsun;
 
 	private: System::Void btnPOKAZGRUPYGRUPY_Click(System::Object^  sender, System::EventArgs^  e)
 	{
-		pokaz_uzytkownikow(dgPOKAZGRUPYGRUPY);
+		if(id_rekordu > -1) pokaz_uzytkownikow(dgPOKAZGRUPYGRUPY);
 		id_rekordu = -1;
 		
 	}
@@ -979,16 +979,19 @@ private: System::Windows::Forms::Button^  btnUsun;
 		}
 	}
 	private: System::Void btnPokazCzlonkow_Click(System::Object^  sender, System::EventArgs^  e) {
-		if(id_rekordu > -1)pokazdane_uzytkownika(dgPOKAZGRUPYGRUPY, id_wykladowca);
-		dgPOKAZGRUPYGRUPY->Columns[0]->Visible = false;
-		dgPOKAZGRUPYGRUPY->Columns[5]->Visible = false;
+		if (id_rekordu > -1)
+		{
+			pokazdane_uzytkownika(dgPOKAZGRUPYGRUPY, id_wykladowca);
+			dgPOKAZGRUPYGRUPY->Columns[0]->Visible = false;
+			dgPOKAZGRUPYGRUPY->Columns[5]->Visible = false;
+		}
 	}
 
 
 
 	private: System::Void dgPOKAZGRUPYGRUPY_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) 
 	{
-		if (e->RowIndex >= 0)
+		if (e->RowIndex >= 0 )
 			{
 				id_rekordu = Convert::ToInt32(dgPOKAZGRUPYGRUPY->Rows[e->RowIndex]->Cells[0]->Value);
 			}
