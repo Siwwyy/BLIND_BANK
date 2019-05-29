@@ -21,6 +21,29 @@ namespace BLINDBANK {
 
 	public ref class _FTP
 	{
+	public:
+		System::Void read_file_n(String^& x)
+		{
+			try
+			{
+				StreamReader^ reader = gcnew StreamReader(this->file_path);
+				System::String^ line = "";
+				line = reader->ReadLine();
+				x += line + " ";
+				//from_file += '\n';
+				while (reader->EndOfStream != true)
+				{
+					line = reader->ReadLine();
+					x += line + " ";
+					//from_file += '\n';
+				}
+				reader->Close();
+			}
+			catch (Exception^ e)
+			{
+				Console::WriteLine(L"Exception: {0}", e->Message);
+			}
+		}
 	private:
 
 		System::String^ from_file;
@@ -48,6 +71,7 @@ namespace BLINDBANK {
 				Console::WriteLine(L"Exception: {0}", e->Message);
 			}
 		}
+
 
 	public:
 		_FTP():
