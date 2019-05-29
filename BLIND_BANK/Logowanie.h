@@ -383,31 +383,31 @@ namespace BLINDBANK {
 		}
 		else
 		{
-			if (_FTP::read_configure_string("DB_CONNECTION2.txt", 0) != "1")
-			{
-				_FTP::write_to_file_DB("DB_CONNECTION2.txt");
+			//if (_FTP::read_configure_string("DB_CONNECTION2.txt", 0) != "1")
+			//{
+			//	_FTP::write_to_file_DB("DB_CONNECTION2.txt");
 
-				_FTP f("createdb.sql");
-				String^ create_db = "";
-				f.read_file_n(create_db);
-				//Here add mysql reader
-				{
-					MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
-					MySqlCommand^ polecenie = laczbaze->CreateCommand();
-					MySqlTransaction^ transakcja;
+			//	_FTP f("createdb.sql");
+			//	String^ create_db = "";
+			//	f.read_file_n(create_db);
+			//	//Here add mysql reader
+			//	{
+			//		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+			//		MySqlCommand^ polecenie = laczbaze->CreateCommand();
+			//		MySqlTransaction^ transakcja;
 
-					laczbaze->Open();
-					transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+			//		laczbaze->Open();
+			//		transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
 
-					polecenie->Connection = laczbaze;
-					polecenie->Transaction = transakcja;
-					polecenie->CommandText = create_db;
-					polecenie->ExecuteNonQuery();
-					transakcja->Commit();
+			//		polecenie->Connection = laczbaze;
+			//		polecenie->Transaction = transakcja;
+			//		polecenie->CommandText = create_db;
+			//		polecenie->ExecuteNonQuery();
+			//		transakcja->Commit();
 
-					
-				}
-			}
+			//		
+			//	}
+			//}
 			
 
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());

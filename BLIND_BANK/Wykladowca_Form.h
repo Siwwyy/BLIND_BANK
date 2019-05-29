@@ -1263,8 +1263,8 @@ private: System::Void btnSubmitOcena_Click(System::Object^  sender, System::Even
 	private: System::Void btnDOWNLOAD_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
 		//System::String^ praca_domowa = "mkdir Grupa nr" + id_rekordu;
-		system("mkdir Prace_Domowe");
-		system("cd Prace_Domowe");
+	/*	system("mkdir Prace_Domowe");
+		system("cd Prace_Domowe");*/
 
 		size_t vec_size = nazwapliku.size();
 		for (size_t i = 0; i < vec_size; ++i)
