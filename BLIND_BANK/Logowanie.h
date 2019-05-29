@@ -379,6 +379,7 @@ namespace BLINDBANK {
 		{
 			MessageBox::Show("PROSZE UZUPELNIC POPRAWNE DANE LOGOWANIA DO BAZY DANYCH!!", "UWAGA!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
 			this->Close();
+			//
 		}
 		else
 		{
