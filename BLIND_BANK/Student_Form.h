@@ -49,6 +49,11 @@ namespace BLINDBANK {
 
 	protected:
 		int _id;
+		String^ _fromFile;
+		String^ _filePath;
+		String^ _idpd;
+		String^ _nazwapd;
+
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
@@ -134,6 +139,7 @@ namespace BLINDBANK {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->dgMain = (gcnew System::Windows::Forms::DataGridView());
 			this->Przeslij = (gcnew System::Windows::Forms::TabPage());
+			this->dgAKTUALNYPLIK = (gcnew System::Windows::Forms::DataGridView());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -147,17 +153,16 @@ namespace BLINDBANK {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->dgGrupy = (gcnew System::Windows::Forms::DataGridView());
-			this->dgAKTUALNYPLIK = (gcnew System::Windows::Forms::DataGridView());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgMain))->BeginInit();
 			this->Przeslij->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgAKTUALNYPLIK))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPrace))->BeginInit();
 			this->tabPage2->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgOceny))->BeginInit();
 			this->tabPage3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgGrupy))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgAKTUALNYPLIK))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// lblAdmin
@@ -245,7 +250,7 @@ namespace BLINDBANK {
 				static_cast<System::Byte>(238)));
 			this->label5->Location = System::Drawing::Point(332, 15);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(394, 69);
+			this->label5->Size = System::Drawing::Size(388, 69);
 			this->label5->TabIndex = 6;
 			this->label5->Text = L"Ekran g³ówny";
 			// 
@@ -268,7 +273,7 @@ namespace BLINDBANK {
 			this->dgMain->AllowUserToDeleteRows = false;
 			this->dgMain->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgMain->Location = System::Drawing::Point(8, 108);
-			this->dgMain->Margin = System::Windows::Forms::Padding(4);
+			this->dgMain->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgMain->Name = L"dgMain";
 			this->dgMain->ReadOnly = true;
 			this->dgMain->Size = System::Drawing::Size(1035, 402);
@@ -291,6 +296,20 @@ namespace BLINDBANK {
 			this->Przeslij->TabIndex = 1;
 			this->Przeslij->Text = L"Przeslij Pracê Domow¹";
 			// 
+			// dgAKTUALNYPLIK
+			// 
+			this->dgAKTUALNYPLIK->AllowUserToAddRows = false;
+			this->dgAKTUALNYPLIK->AllowUserToDeleteRows = false;
+			this->dgAKTUALNYPLIK->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgAKTUALNYPLIK->Location = System::Drawing::Point(5, 358);
+			this->dgAKTUALNYPLIK->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dgAKTUALNYPLIK->Name = L"dgAKTUALNYPLIK";
+			this->dgAKTUALNYPLIK->ReadOnly = true;
+			this->dgAKTUALNYPLIK->RowTemplate->Height = 24;
+			this->dgAKTUALNYPLIK->Size = System::Drawing::Size(1041, 133);
+			this->dgAKTUALNYPLIK->TabIndex = 6;
+			this->dgAKTUALNYPLIK->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Student_Form::dgAKTUALNYPLIK_CellContentClick);
+			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
@@ -298,7 +317,7 @@ namespace BLINDBANK {
 				static_cast<System::Byte>(238)));
 			this->label4->Location = System::Drawing::Point(243, 14);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(645, 69);
+			this->label4->Size = System::Drawing::Size(631, 69);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"Przeœlij pracê domow¹";
 			this->label4->Click += gcnew System::EventHandler(this, &Student_Form::label4_Click);
@@ -355,7 +374,7 @@ namespace BLINDBANK {
 			this->gdPrace->Size = System::Drawing::Size(1041, 226);
 			this->gdPrace->TabIndex = 0;
 			this->gdPrace->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Student_Form::gdPrace_CellClick);
-			this->gdPrace->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Student_Form::dataGridView1_CellContentClick_1);
+			this->gdPrace->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Student_Form::gdPrace_CellContentClick);
 			// 
 			// tabPage2
 			// 
@@ -364,7 +383,7 @@ namespace BLINDBANK {
 			this->tabPage2->Controls->Add(this->button5);
 			this->tabPage2->Controls->Add(this->dgOceny);
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
-			this->tabPage2->Margin = System::Windows::Forms::Padding(4);
+			this->tabPage2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Size = System::Drawing::Size(1053, 668);
 			this->tabPage2->TabIndex = 2;
@@ -387,7 +406,7 @@ namespace BLINDBANK {
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button5->Location = System::Drawing::Point(375, 601);
-			this->button5->Margin = System::Windows::Forms::Padding(4);
+			this->button5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(268, 60);
 			this->button5->TabIndex = 1;
@@ -401,7 +420,7 @@ namespace BLINDBANK {
 			this->dgOceny->AllowUserToDeleteRows = false;
 			this->dgOceny->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgOceny->Location = System::Drawing::Point(4, 113);
-			this->dgOceny->Margin = System::Windows::Forms::Padding(4);
+			this->dgOceny->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgOceny->Name = L"dgOceny";
 			this->dgOceny->ReadOnly = true;
 			this->dgOceny->Size = System::Drawing::Size(1045, 480);
@@ -414,6 +433,7 @@ namespace BLINDBANK {
 			this->tabPage3->Controls->Add(this->button6);
 			this->tabPage3->Controls->Add(this->dgGrupy);
 			this->tabPage3->Location = System::Drawing::Point(4, 25);
+			this->tabPage3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabPage3->Name = L"tabPage3";
 			this->tabPage3->Size = System::Drawing::Size(1053, 668);
 			this->tabPage3->TabIndex = 3;
@@ -436,6 +456,7 @@ namespace BLINDBANK {
 			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button6->Location = System::Drawing::Point(360, 571);
+			this->button6->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->button6->Name = L"button6";
 			this->button6->Size = System::Drawing::Size(269, 79);
 			this->button6->TabIndex = 1;
@@ -447,23 +468,11 @@ namespace BLINDBANK {
 			// 
 			this->dgGrupy->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgGrupy->Location = System::Drawing::Point(3, 103);
+			this->dgGrupy->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgGrupy->Name = L"dgGrupy";
 			this->dgGrupy->RowTemplate->Height = 24;
-			this->dgGrupy->Size = System::Drawing::Size(1045, 451);
+			this->dgGrupy->Size = System::Drawing::Size(1045, 450);
 			this->dgGrupy->TabIndex = 0;
-			// 
-			// dgAKTUALNYPLIK
-			// 
-			this->dgAKTUALNYPLIK->AllowUserToAddRows = false;
-			this->dgAKTUALNYPLIK->AllowUserToDeleteRows = false;
-			this->dgAKTUALNYPLIK->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgAKTUALNYPLIK->Location = System::Drawing::Point(5, 358);
-			this->dgAKTUALNYPLIK->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->dgAKTUALNYPLIK->Name = L"dgAKTUALNYPLIK";
-			this->dgAKTUALNYPLIK->ReadOnly = true;
-			this->dgAKTUALNYPLIK->RowTemplate->Height = 24;
-			this->dgAKTUALNYPLIK->Size = System::Drawing::Size(1041, 133);
-			this->dgAKTUALNYPLIK->TabIndex = 6;
 			// 
 			// Student_Form
 			// 
@@ -486,6 +495,7 @@ namespace BLINDBANK {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgMain))->EndInit();
 			this->Przeslij->ResumeLayout(false);
 			this->Przeslij->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgAKTUALNYPLIK))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->gdPrace))->EndInit();
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
@@ -493,7 +503,6 @@ namespace BLINDBANK {
 			this->tabPage3->ResumeLayout(false);
 			this->tabPage3->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgGrupy))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgAKTUALNYPLIK))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -621,7 +630,7 @@ namespace BLINDBANK {
 			std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = "+_id+";", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`pk`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `Ocena`.`ocena` FROM `Ocena`, `uzytkownicy`, `praca_domowa` where `praca_domowa`.`pk`  = `Ocena`.`id_pd` and `Ocena`.`id_osoby` = `uzytkownicy`.`iduzytkownicy` and `Ocena`.`id_osoby` = "+_id+";", laczbaze);
 
 			try {
 
@@ -642,7 +651,7 @@ namespace BLINDBANK {
 			{
 				MessageBox::Show(komunikat->Message);
 			}
-			//siatka->Columns[0]->Visible = false;
+			siatka->Columns[0]->Visible = false;
 		}
 
 		private: void pokaz_grupy(System::Windows::Forms::DataGridView^ siatka)
@@ -674,12 +683,56 @@ namespace BLINDBANK {
 			//siatka->Columns[0]->Visible = false;
 		}
 
+
+		private: void przeslij_prace()
+		{
+
+			if (/*zaznaczono prace domowa i przeslano plik*/true) {
+
+				//MySqlCommand^ zapytanie = gcnew MySqlCommand("insert into `pliki` values `NULL` `" + _id + "` `123` `" + "` `aaaa` `" + _fromFile, laczbaze);
+				//MySqlCommand^ zapytanie = gcnew MySqlCommand("insert into `pliki` values NULL" + _id + /*idpd, nazwa*/ _fromFile, laczbaze);
+				MessageBox::Show("asd");
+
+				MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+				MySqlCommand^ polecenie = laczbaze->CreateCommand();
+				MySqlTransaction^ transakcja;
+
+				laczbaze->Open();
+				transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+				polecenie->Connection = laczbaze;
+				polecenie->Transaction = transakcja;
+
+
+				try {
+
+					// wstaw do bazy danych
+					polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", " + " \"" + _nazwapd + "\", \"" + _fromFile + "\")";
+					polecenie->ExecuteNonQuery();
+					transakcja->Commit();
+
+
+
+					laczbaze->Close();
+				}
+				catch (Exception^ komunikat)
+				{
+					MessageBox::Show(komunikat->Message);
+				}
+			}
+		}
+
+
+
+
 private: System::Void tabPage1_Click(System::Object^  sender, System::EventArgs^  e) {
 }
-private: System::Void dataGridView1_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+private: System::Void gdPrace_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+	_idpd = Convert::ToString(gdPrace->Rows[e->RowIndex]->Cells[0]->Value);
+	_nazwapd = Convert::ToString(gdPrace->Rows[e->RowIndex]->Cells[1]->Value);
+
 }
-private: System::Void dataGridView1_CellContentClick_1(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
-}
+
 private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) 
 {
 	Stream^ mystream;
@@ -693,12 +746,15 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 
 			//MessageBox::Show(file_path);
 
-			mystream->Close();
+				mystream->Close();
 
 			_FTP my_file_reader(file_path);
 			from_file = my_file_reader.get_from_file();
 			Pokaz_plik(dgAKTUALNYPLIK,file_path,from_file);
 			//this->richtest->Text = my_file_reader.get_from_file();
+
+			_fromFile = from_file;
+			_filePath = file_path;
 		}
 	}
 
@@ -709,10 +765,9 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
+		przeslij_prace();
 
 	}
-
-
 
 
 private: System::Void tabPage1_Click_1(System::Object^  sender, System::EventArgs^  e) {
@@ -745,7 +800,10 @@ private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  
 
 	private: System::Void gdPrace_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) 
 	{
+
 		id_aktualnego_rekordu_pd = Convert::ToInt32(gdPrace->Rows[e->RowIndex]->Cells[0]->Value);
 	}
+private: System::Void dgAKTUALNYPLIK_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+}
 };
 }
