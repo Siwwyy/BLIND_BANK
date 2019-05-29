@@ -706,7 +706,14 @@ namespace BLINDBANK {
 				try {
 
 					// wstaw do bazy danych
-					polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", " + " \"" + _nazwapd + "\", \"" + _fromFile + "\")";
+
+					if (button2->Text == "Wyœlij") {
+						polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", " + " \"" + _nazwapd + "\", \"" + _fromFile + "\")";
+					}
+					else {
+						polecenie->CommandText = " update table set plik = \"" + _fromFile + "\" where id_osoby = " + _id + " and id_pd = " + _idpd + ";";
+					}
+
 					polecenie->ExecuteNonQuery();
 					transakcja->Commit();
 
