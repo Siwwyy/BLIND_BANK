@@ -53,6 +53,7 @@ namespace BLINDBANK {
 		String^ _fromFile;
 		String^ _filePath;
 		String^ _idpd;
+		String^ _fileStr;
 		bool jk;
 	private: System::Windows::Forms::Button^  button7;
 	private: System::Windows::Forms::Label^  label6;
@@ -999,11 +1000,10 @@ private: System::Void dgMain_CellContentClick(System::Object^  sender, System::W
 		richTextBox1->Visible = true;
 		button8->Visible = true;
 
-		String^ fileStr;
-		fileStr = Convert::ToString(dgMain->Rows[e->RowIndex]->Cells[0]->Value);
+		//String^ fileStr;
+		_fileStr = Convert::ToString(dgMain->Rows[e->RowIndex]->Cells[0]->Value);
 
-		richTextBox1->Text = fileStr;
-
+		richTextBox1->Text = _fileStr;
 
 		button8->Enabled = !Convert::ToBoolean(dgMain->Rows[e->RowIndex]->Cells[3]->Value);
 
@@ -1040,7 +1040,7 @@ private: System::Void button8_Click(System::Object^  sender, System::EventArgs^ 
 
 	try {
 
-		polecenie->CommandText = "update pliki set zatwierdzona = 1 where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
+		polecenie->CommandText = "update `pliki` set `zatwierdzona` = True where `id_osoby` = '" + _id + "' and `plik` = '" + _fileStr + "';";
 		
 		button8->Enabled = false;
 
