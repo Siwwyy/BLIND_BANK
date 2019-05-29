@@ -110,3 +110,5 @@ ALTER TABLE `uzytkownicy`
 ALTER TABLE `uzytkownicy`
   ADD CONSTRAINT `fk_uzytkownicy_rola1` FOREIGN KEY (`rola_idrola`) REFERENCES `rola` (`idrola`);
 COMMIT;
+
+INSERT INTO `uzytkownicy`(`iduzytkownicy`, `Imie_Uzytkownika`, `Nazwisko_Uzytkownika`, `Unique_Index_Number`, `Email_Uzytkownika`, `Haslo_Uzytkownika`, `rola_idrola`) VALUES (null, 'root','root',0,'root@root.root','root',1)
