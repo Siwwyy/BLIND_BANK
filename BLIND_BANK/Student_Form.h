@@ -601,7 +601,7 @@ namespace BLINDBANK {
 		{
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`id_grupy` as `Numer grupy`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `praca_domowa`.`expire_date` as `Data oddania` FROM `uzytkownicy`, `grupy_uzytkownikow`, `praca_domowa` where `uzytkownicy`.`iduzytkownicy` =`grupy_uzytkownikow`.`iduzytkownika` and `praca_domowa`.`id_grupy` = `grupy_uzytkownikow`.`idgrupy`;", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `praca_domowa`.`pk` as `Numer grupy`, `praca_domowa`.`title` as `Nazwa pracy`, `praca_domowa`.`contents` as `Treœæ`, `praca_domowa`.`expire_date` as `Data oddania` FROM `uzytkownicy`, `grupy_uzytkownikow`, `praca_domowa` where `uzytkownicy`.`iduzytkownicy` =`grupy_uzytkownikow`.`iduzytkownika` and `praca_domowa`.`id_grupy` = `grupy_uzytkownikow`.`idgrupy`;", laczbaze);
 
 			try {
 
@@ -691,7 +691,6 @@ namespace BLINDBANK {
 
 				//MySqlCommand^ zapytanie = gcnew MySqlCommand("insert into `pliki` values `NULL` `" + _id + "` `123` `" + "` `aaaa` `" + _fromFile, laczbaze);
 				//MySqlCommand^ zapytanie = gcnew MySqlCommand("insert into `pliki` values NULL" + _id + /*idpd, nazwa*/ _fromFile, laczbaze);
-				MessageBox::Show("asd");
 
 				MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 				MySqlCommand^ polecenie = laczbaze->CreateCommand();
@@ -722,6 +721,42 @@ namespace BLINDBANK {
 			}
 		}
 
+		private: void update_przycisk() {
+			
+			std::string id = std::to_string(_id);
+			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from `pliki` where `id_osoby` = " + _id + " and `id_pd` = " + _idpd + ";", laczbaze);
+
+			try {
+
+				MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+				moja->SelectCommand = zapytanie;
+
+				DataTable^ tabela = gcnew DataTable();
+				moja->Fill(tabela);
+				//MessageBox::Show("zjebales kurwa");
+				//MessageBox::Show(Convert::ToString(tabela->Rows->Count));
+
+
+				if (tabela->Rows->Count != 0) {
+					// update
+					button2->Text = "Zamieñ";
+				}
+				else {
+					button2->Text = "Wyœlij";
+				}
+
+				laczbaze->Close();
+			}
+			catch (Exception^ komunikat)
+			{
+				MessageBox::Show(komunikat->Message);
+			}
+			//siatka->Columns[0]->Visible = false;
+
+
+		}
+
 
 
 
@@ -730,6 +765,7 @@ private: System::Void tabPage1_Click(System::Object^  sender, System::EventArgs^
 private: System::Void gdPrace_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
 	_idpd = Convert::ToString(gdPrace->Rows[e->RowIndex]->Cells[0]->Value);
 	_nazwapd = Convert::ToString(gdPrace->Rows[e->RowIndex]->Cells[1]->Value);
+	update_przycisk();
 
 }
 
@@ -766,6 +802,7 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
 		przeslij_prace();
+		update_przycisk();
 
 	}
 
