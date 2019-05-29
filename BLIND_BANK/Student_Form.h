@@ -1047,8 +1047,6 @@ private: System::Void button8_Click(System::Object^  sender, System::EventArgs^ 
 		polecenie->ExecuteNonQuery();
 		transakcja->Commit();
 
-
-
 		laczbaze->Close();
 
 
