@@ -478,30 +478,52 @@ namespace BLINDBANK {
 		//String^ konfiguracja = L"datasource=localhost;port=3306;username=root;password=1234;database=gabinet";
 
 		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
-		MySqlCommand^ polecenie = laczbaze->CreateCommand();
-		MySqlTransaction^ transakcja;
-
 		laczbaze->Open();
-		transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
 
-		polecenie->Connection = laczbaze;
+		//here for us we will be selecting the role, for example if role == "Administrator" open the administrator form
+		//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT uzytkownik_id FROM uzytkownik WHERE uzytkownik_nazwa = '" + txtIndex->Text + "' AND haslo = PASSWORD('" + txtHaslo->Text + "');", laczbaze);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT rola_idrola FROM uzytkownicy WHERE Email_Uzytkownika = '" + txtEMAIL->Text + "' AND `uzytkownicy`.`Unique_Index_Number` = '" + txtUNIQUEINDEXNUMBER->Text + "';", laczbaze);
+		MySqlDataReader^ odczytanie;
 
-		polecenie->Transaction = transakcja;
-
-		try
+		odczytanie = zapytanie->ExecuteReader();
+		//System::Data::Common::DbDataReader^ reader = odczytanie;
+		//int id_rola = odczytanie->GetData(0);
+		//reader->
+	//	DBNull^ b;
+		if (odczytanie->HasRows)
 		{
-			polecenie->CommandText = "UPDATE uzytkownicy SET Haslo_Uzytkownika = '" + txtNOWEHASLO->Text + "' WHERE Unique_Index_Number = '" + txtUNIQUEINDEXNUMBER->Text + "' AND Email_Uzytkownika = '" + txtEMAIL->Text + "';";
-			polecenie->ExecuteNonQuery();
+			laczbaze->Close();
+			laczbaze->Open();
+			MySqlCommand^ polecenie = laczbaze->CreateCommand();
+			MySqlTransaction^ transakcja;
 
-			transakcja->Commit();
-			MessageBox::Show("Haslo Uzytkownika zostalo poprawnie zmienione", "UWAGA!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			
+			transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+			polecenie->Connection = laczbaze;
+			polecenie->Transaction = transakcja;
+			try
+			{
+				//polecenie->CommandText = "UPDATE uzytkownicy SET Haslo_Uzytkownika = '" + txtNOWEHASLO->Text + "' WHERE Unique_Index_Number = '" + txtUNIQUEINDEXNUMBER->Text + "' AND Email_Uzytkownika = '" + txtEMAIL->Text + "';";
+				//polecenie->CommandText = "UPDATE `uzytkownicy` SET `Haslo_Uzytkownika` = '12345' WHERE `uzytkownicy`.`iduzytkownicy` = 1 AND `uzytkownicy`.`rola_idrola` = 1;";
+				polecenie->CommandText = "UPDATE `uzytkownicy` SET `Haslo_Uzytkownika` = '" + txtNOWEHASLO->Text + "' WHERE `uzytkownicy`.`Unique_Index_Number` = '" + txtUNIQUEINDEXNUMBER->Text + "' AND `uzytkownicy`.`Email_Uzytkownika` = '" + txtEMAIL->Text + "';";
+				polecenie->ExecuteNonQuery();
+
+				transakcja->Commit();
+				MessageBox::Show("Haslo Uzytkownika zostalo poprawnie zmienione", "UWAGA!", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			}
+			catch (Exception^ komunikat)
+			{
+				MessageBox::Show("Bledny adres e-mail lub niepoprawny numer indexu!", "UWAGA! ", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+				transakcja->Rollback();
+			}
 		}
-		catch (...)
+		else
 		{
-			MessageBox::Show("Bledny adres e-mail lub niepoprawny numer indexu!", "UWAGA!", MessageBoxButtons::OK, MessageBoxIcon::Warning);
-			transakcja->Rollback();
+			MessageBox::Show("Bledny adres e-mail lub niepoprawny numer indexu!", "UWAGA! ", MessageBoxButtons::OK, MessageBoxIcon::Warning);
+			laczbaze->Close();
 		}
-		laczbaze->Close();
+		
 	}
 
 
