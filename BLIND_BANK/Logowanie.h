@@ -487,10 +487,6 @@ namespace BLINDBANK {
 		MySqlDataReader^ odczytanie;
 
 		odczytanie = zapytanie->ExecuteReader();
-		//System::Data::Common::DbDataReader^ reader = odczytanie;
-		//int id_rola = odczytanie->GetData(0);
-		//reader->
-	//	DBNull^ b;
 		if (odczytanie->HasRows)
 		{
 			laczbaze->Close();
