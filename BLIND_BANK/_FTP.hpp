@@ -138,8 +138,10 @@ namespace BLINDBANK {
 		{
 			try
 			{
-				//String^ file = "Prace_Domowe/"+number+file_path->Remove((file_path->Length - 2), 2);
-				String^ file = "$(SolutionDir)"+number+file_path->Remove((file_path->Length - 2), 2);
+				//system("cd Prace_Domowe");
+				//String^ file = "[targetdir]/"+number+file_path->Remove((file_path->Length - 2), 2);
+				String^ file = "Prace_Domowe/"+number+file_path->Remove((file_path->Length - 2), 2);
+				//String^ file = number+file_path->Remove((file_path->Length - 2), 2);
 				StreamWriter^ writer = gcnew StreamWriter(file);
 				for (size_t i = 0; i < to_file->Length; ++i)
 				{
