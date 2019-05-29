@@ -554,7 +554,6 @@ namespace BLINDBANK {
 		siatka->Columns[0]->Visible = false;
 	}
 
-
 		//
 		// OWN FUNCTIONS
 		//		
