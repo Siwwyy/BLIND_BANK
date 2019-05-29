@@ -533,7 +533,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:BLIND_BANK"
         "ProductCode" = "8:{3F5A8AE8-C4ED-4754-9898-0AEE30573E8D}"
-        "PackageCode" = "8:{B2BABF68-D1D6-4D49-919A-17D95CC3C8D8}"
+        "PackageCode" = "8:{79BD2706-9A41-4358-A397-60E89F11DF5E}"
         "UpgradeCode" = "8:{BC43648D-3E6F-4912-8B85-A0E780E899B3}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
