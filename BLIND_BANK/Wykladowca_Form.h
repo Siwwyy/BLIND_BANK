@@ -312,6 +312,7 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->dgPOKAZGRUPYGRUPY = (gcnew System::Windows::Forms::DataGridView());
 				 this->btnPOKAZGRUPYGRUPY = (gcnew System::Windows::Forms::Button());
 				 this->PraceDomowe = (gcnew System::Windows::Forms::TabPage());
+				 this->btnUsun = (gcnew System::Windows::Forms::Button());
 				 this->btnDOWNLOAD = (gcnew System::Windows::Forms::Button());
 				 this->dgPLIKI = (gcnew System::Windows::Forms::DataGridView());
 				 this->btnSubmitOcena = (gcnew System::Windows::Forms::Button());
@@ -343,7 +344,6 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->label3 = (gcnew System::Windows::Forms::Label());
 				 this->label2 = (gcnew System::Windows::Forms::Label());
 				 this->combobox1 = (gcnew System::Windows::Forms::ComboBox());
-				 this->btnUsun = (gcnew System::Windows::Forms::Button());
 				 this->tabControl1->SuspendLayout();
 				 this->Grupy->SuspendLayout();
 				 (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgPOKAZGRUPYGRUPY))->BeginInit();
@@ -497,6 +497,16 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->PraceDomowe->TabIndex = 1;
 				 this->PraceDomowe->Text = L"Prace domowe";
 				 // 
+				 // btnUsun
+				 // 
+				 this->btnUsun->Location = System::Drawing::Point(407, 578);
+				 this->btnUsun->Name = L"btnUsun";
+				 this->btnUsun->Size = System::Drawing::Size(158, 87);
+				 this->btnUsun->TabIndex = 14;
+				 this->btnUsun->Text = L"Usuñ";
+				 this->btnUsun->UseVisualStyleBackColor = true;
+				 this->btnUsun->Click += gcnew System::EventHandler(this, &Wykladowca_Form::btnUsun_Click);
+				 // 
 				 // btnDOWNLOAD
 				 // 
 				 this->btnDOWNLOAD->Location = System::Drawing::Point(182, 578);
@@ -589,7 +599,7 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->lbCONTENT->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
 				 this->lbCONTENT->Location = System::Drawing::Point(773, 76);
 				 this->lbCONTENT->Name = L"lbCONTENT";
-				 this->lbCONTENT->Size = System::Drawing::Size(83, 29);
+				 this->lbCONTENT->Size = System::Drawing::Size(103, 29);
 				 this->lbCONTENT->TabIndex = 5;
 				 this->lbCONTENT->Text = L"Treœæ:";
 				 // 
@@ -611,7 +621,7 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->lbTITLE->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
 				 this->lbTITLE->Location = System::Drawing::Point(773, 6);
 				 this->lbTITLE->Name = L"lbTITLE";
-				 this->lbTITLE->Size = System::Drawing::Size(75, 29);
+				 this->lbTITLE->Size = System::Drawing::Size(77, 29);
 				 this->lbTITLE->TabIndex = 3;
 				 this->lbTITLE->Text = L"Tytu³:";
 				 // 
@@ -793,7 +803,7 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->label4->AutoSize = true;
 				 this->label4->Location = System::Drawing::Point(492, 162);
 				 this->label4->Name = L"label4";
-				 this->label4->Size = System::Drawing::Size(45, 20);
+				 this->label4->Size = System::Drawing::Size(47, 20);
 				 this->label4->TabIndex = 4;
 				 this->label4->Text = L"Tytu³";
 				 // 
@@ -833,16 +843,6 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->combobox1->Size = System::Drawing::Size(217, 28);
 				 this->combobox1->TabIndex = 0;
 				 // 
-				 // btnUsun
-				 // 
-				 this->btnUsun->Location = System::Drawing::Point(407, 578);
-				 this->btnUsun->Name = L"btnUsun";
-				 this->btnUsun->Size = System::Drawing::Size(158, 87);
-				 this->btnUsun->TabIndex = 14;
-				 this->btnUsun->Text = L"Usuñ";
-				 this->btnUsun->UseVisualStyleBackColor = true;
-				 this->btnUsun->Click += gcnew System::EventHandler(this, &Wykladowca_Form::btnUsun_Click);
-				 // 
 				 // Wykladowca_Form
 				 // 
 				 this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -859,6 +859,7 @@ private: System::Windows::Forms::Button^  btnUsun;
 				 this->MinimizeBox = false;
 				 this->Name = L"Wykladowca_Form";
 				 this->Text = L"Wykladowca";
+				 this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Wykladowca_Form::Wykladowca_Form_FormClosed);
 				 this->Load += gcnew System::EventHandler(this, &Wykladowca_Form::Wykladowca_Form_Load);
 				 this->tabControl1->ResumeLayout(false);
 				 this->Grupy->ResumeLayout(false);
@@ -1299,5 +1300,9 @@ private: System::Void btnUsun_Click(System::Object^  sender, System::EventArgs^ 
 
 
 
+private: System::Void Wykladowca_Form_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) 
+{
+	Logowanie_Form->Visible = true;
+}
 };
 }

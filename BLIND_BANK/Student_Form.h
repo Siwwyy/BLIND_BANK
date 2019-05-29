@@ -250,7 +250,7 @@ namespace BLINDBANK {
 				static_cast<System::Byte>(238)));
 			this->label5->Location = System::Drawing::Point(332, 15);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(388, 69);
+			this->label5->Size = System::Drawing::Size(394, 69);
 			this->label5->TabIndex = 6;
 			this->label5->Text = L"Ekran g³ówny";
 			// 
@@ -273,7 +273,7 @@ namespace BLINDBANK {
 			this->dgMain->AllowUserToDeleteRows = false;
 			this->dgMain->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgMain->Location = System::Drawing::Point(8, 108);
-			this->dgMain->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dgMain->Margin = System::Windows::Forms::Padding(4);
 			this->dgMain->Name = L"dgMain";
 			this->dgMain->ReadOnly = true;
 			this->dgMain->Size = System::Drawing::Size(1035, 402);
@@ -317,7 +317,7 @@ namespace BLINDBANK {
 				static_cast<System::Byte>(238)));
 			this->label4->Location = System::Drawing::Point(243, 14);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(631, 69);
+			this->label4->Size = System::Drawing::Size(645, 69);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"Przeœlij pracê domow¹";
 			this->label4->Click += gcnew System::EventHandler(this, &Student_Form::label4_Click);
@@ -383,7 +383,7 @@ namespace BLINDBANK {
 			this->tabPage2->Controls->Add(this->button5);
 			this->tabPage2->Controls->Add(this->dgOceny);
 			this->tabPage2->Location = System::Drawing::Point(4, 25);
-			this->tabPage2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->tabPage2->Margin = System::Windows::Forms::Padding(4);
 			this->tabPage2->Name = L"tabPage2";
 			this->tabPage2->Size = System::Drawing::Size(1053, 668);
 			this->tabPage2->TabIndex = 2;
@@ -406,7 +406,7 @@ namespace BLINDBANK {
 			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(238)));
 			this->button5->Location = System::Drawing::Point(375, 601);
-			this->button5->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->button5->Margin = System::Windows::Forms::Padding(4);
 			this->button5->Name = L"button5";
 			this->button5->Size = System::Drawing::Size(268, 60);
 			this->button5->TabIndex = 1;
@@ -420,7 +420,7 @@ namespace BLINDBANK {
 			this->dgOceny->AllowUserToDeleteRows = false;
 			this->dgOceny->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgOceny->Location = System::Drawing::Point(4, 113);
-			this->dgOceny->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dgOceny->Margin = System::Windows::Forms::Padding(4);
 			this->dgOceny->Name = L"dgOceny";
 			this->dgOceny->ReadOnly = true;
 			this->dgOceny->Size = System::Drawing::Size(1045, 480);
@@ -488,6 +488,7 @@ namespace BLINDBANK {
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"Student_Form";
 			this->Text = L"Student";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Student_Form::Student_Form_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &Student_Form::Student_Form_Load);
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
@@ -803,6 +804,10 @@ private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  
 		id_aktualnego_rekordu_pd = Convert::ToInt32(gdPrace->Rows[e->RowIndex]->Cells[0]->Value);
 	}
 private: System::Void dgAKTUALNYPLIK_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
+}
+private: System::Void Student_Form_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e)
+{
+	Logowanie_Form->Visible = true;
 }
 };
 }
