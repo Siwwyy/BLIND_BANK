@@ -1,7 +1,7 @@
 #include <iostream>
   int main() 
 {
-   printf("Witaj ?wiecie");
+   printf("Witaj świecie");
    return 0;
  
 }
