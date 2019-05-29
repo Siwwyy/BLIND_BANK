@@ -1262,15 +1262,13 @@ private: System::Void btnSubmitOcena_Click(System::Object^  sender, System::Even
 
 	private: System::Void btnDOWNLOAD_Click(System::Object^  sender, System::EventArgs^  e) 
 	{
-		System::String^ praca_domowa = "mkdir Grupa nr" + id_rekordu;
-		//system("mkdir Prace_Domowe");
+		//System::String^ praca_domowa = "mkdir Grupa nr" + id_rekordu;
+		system("mkdir Prace_Domowe");
 		system("cd Prace_Domowe");
 
 		size_t vec_size = nazwapliku.size();
 		for (size_t i = 0; i < vec_size; ++i)
 		{
-			/*nazwapliku.push_back(Convert::ToString(dgPLIKI->Rows[i]->Cells[0]->Value));
-			calyplik.push_back(Convert::ToString(dgPLIKI->Rows[i]->Cells[1]->Value));*/
 			_FTP::write_to_file(calyplik[i], nazwapliku[i]);
 		}
 		++number_folder;
