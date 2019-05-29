@@ -114,12 +114,32 @@ namespace BLINDBANK {
 			}
 		}
 
+
+		static System::Void write_to_file_DB(System::String^ file_path)
+		{
+			try
+			{
+				String^ file = "1";
+				StreamWriter^ writer = gcnew StreamWriter(file_path);
+				for (size_t i = 0; i < 1; ++i)
+				{
+					writer->Write(file[0]);
+				}
+				writer->Close();
+			}
+			catch (Exception^ e)
+			{
+				Console::WriteLine(L"Exception: {0}", e->Message);
+			}
+		}
+
+
 		static System::Void write_to_file(System::String^ to_file, System::String^ file_path)
 		{
 			try
 			{
 				String^ file = "Prace_Domowe/"+number+file_path->Remove((file_path->Length - 2), 2);
-				StreamWriter^ writer = gcnew StreamWriter(file, true, Encoding::ASCII);
+				StreamWriter^ writer = gcnew StreamWriter(file);
 				for (size_t i = 0; i < to_file->Length; ++i)
 				{
 					if (to_file[i] == '{' || to_file[i] == '}')

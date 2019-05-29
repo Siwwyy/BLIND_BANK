@@ -383,24 +383,32 @@ namespace BLINDBANK {
 		}
 		else
 		{
-			_FTP f("createdb.sql");
-			String^ create_db = "";
-			f.read_file_n(create_db);
-			//Here add mysql reader
+			if (_FTP::read_configure_string("DB_CONNECTION2.txt", 0) != "1")
 			{
-				MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
-				MySqlCommand^ polecenie = laczbaze->CreateCommand();
-				MySqlTransaction^ transakcja;
+				_FTP::write_to_file_DB("DB_CONNECTION2.txt");
 
-				laczbaze->Open();
-				transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+				_FTP f("createdb.sql");
+				String^ create_db = "";
+				f.read_file_n(create_db);
+				//Here add mysql reader
+				{
+					MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+					MySqlCommand^ polecenie = laczbaze->CreateCommand();
+					MySqlTransaction^ transakcja;
 
-				polecenie->Connection = laczbaze;
-				polecenie->Transaction = transakcja;
-				polecenie->CommandText = create_db;
-				polecenie->ExecuteNonQuery();
-				transakcja->Commit();
+					laczbaze->Open();
+					transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+					polecenie->Connection = laczbaze;
+					polecenie->Transaction = transakcja;
+					polecenie->CommandText = create_db;
+					polecenie->ExecuteNonQuery();
+					transakcja->Commit();
+
+					
+				}
 			}
+			
 
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
 			//here for us we will be selecting the role, for example if role == "Administrator" open the administrator form

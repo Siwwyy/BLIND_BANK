@@ -88,13 +88,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_1270380FBC7144E3B551C2A82A7736A3"
+        "OwnerKey" = "8:_95AED1D72C1141549F5675518E87F632"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_95AED1D72C1141549F5675518E87F632"
+        "OwnerKey" = "8:_9035DDF7A40948F198862C341BB79E4F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -106,7 +106,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_9035DDF7A40948F198862C341BB79E4F"
+        "OwnerKey" = "8:_1270380FBC7144E3B551C2A82A7736A3"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -166,6 +166,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
