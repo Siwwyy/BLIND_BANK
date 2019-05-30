@@ -1,5 +1,5 @@
-remotemysql.com
+localhost
 3306
-aUy3ZvnM7k
-wUMpRMvSyN
-aUy3ZvnM7k
+root
+1234
+sample

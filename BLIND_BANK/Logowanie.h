@@ -388,7 +388,7 @@ namespace BLINDBANK {
 	}
 
 
-	private: System::Void btnZaloguj_Click_1(System::Object^  sender, System::EventArgs^  e) 
+	private: System::Void btnZaloguj_Click_1(System::Object^  sender, System::EventArgs^  e)
 	{
 		if (SQL_CONFIGURATION::get_datasource() == "1")
 		{
@@ -405,8 +405,6 @@ namespace BLINDBANK {
 					//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika, Nazwisko_Uzytkownika, Unique_Index_Number, Email_Uzytkownika, Haslo_Uzytkownika , rola_idrola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
 					MySqlCommand^ zapytanie = gcnew MySqlCommand("SHOW TABLES LIKE 'uzytkownicy';", laczbaze);
 
-					try {
-
 						MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
 						moja->SelectCommand = zapytanie;
 
@@ -414,15 +412,10 @@ namespace BLINDBANK {
 						moja->Fill(tabela);
 
 						BindingSource^ zrodlo = gcnew BindingSource();
-						zrodlo->DataSource = tabela;
+						zrodlo->DataSource =tabela;
 						dgtmp->DataSource = zrodlo;
 
 						laczbaze->Close();
-					}
-					catch (Exception^ komunikat)
-					{
-						MessageBox::Show(komunikat->Message);
-					}
 				}
 			if (dgtmp->RowCount<=1)
 			{
