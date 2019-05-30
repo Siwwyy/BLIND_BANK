@@ -431,7 +431,7 @@ namespace BLINDBANK {
 						BindingSource^ zrodlo = gcnew BindingSource();
 						zrodlo->DataSource =tabela;
 						dgtmp->DataSource = zrodlo;
-
+						//
 						laczbaze->Close();
 				}
 			//Usun
