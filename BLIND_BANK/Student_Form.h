@@ -804,14 +804,15 @@ namespace BLINDBANK {
 
 					// wstaw do bazy danych
 
-					if (button2->Text == "Wyœlij") {
+					//if (button2->Text == "Wyœlij") {
 						//polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", " + " \"" + _nazwapd + "\", \"" + _fromFile + "\")";
-						polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", '" + _nazwapd + "', '" + _fromFile + "', 0)";
-					}
-					else {
+						//polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", '" + _nazwapd + "', '" + _fromFile + "', 0)";
+		polecenie->CommandText = "INSERT INTO `pliki` (`pk`, `id_osoby`, `id_pd`, `nazwa`, `plik`, `zatwierdzona`) VALUES (NULL, '" + _id + "', '" + _idpd + "', '" + _nazwapd + "', '" + _fromFile + "', '0');";
+					//}
+					//else {
 						//polecenie->CommandText = "update `pliki` set `plik` = \"" + _fromFile + "\" where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
-						polecenie->CommandText = "update `pliki` set `plik` = '" + _fromFile + "' where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
-					}
+						//polecenie->CommandText = "update `pliki` set `plik` = '" + _fromFile + "' where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
+					//}
 
 					polecenie->ExecuteNonQuery();
 					transakcja->Commit();
@@ -981,7 +982,42 @@ private: System::Void label4_Click(System::Object^  sender, System::EventArgs^  
 
 	private: System::Void gdPrace_CellClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) 
 	{
+		_idpd = Convert::ToString(gdPrace->Rows[e->RowIndex]->Cells[0]->Value);
+		_nazwapd = Convert::ToString(gdPrace->Rows[e->RowIndex]->Cells[1]->Value);
 
+		MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
+		MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * from `pliki` where `zatwierdzona` = 1 and `id_osoby` = '" + _id + "' and `id_pd` = '" + _idpd + "';", laczbaze);
+
+		try {
+
+			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+			moja->SelectCommand = zapytanie;
+
+			DataTable^ tabela = gcnew DataTable();
+			moja->Fill(tabela);
+
+			MessageBox::Show(Convert::ToString(tabela->Rows->Count));
+
+
+
+			if (tabela->Rows->Count != 0) {
+				button2->Enabled = false;
+			}
+			else {
+				button2->Enabled = true;
+			}
+
+			laczbaze->Close();
+		}
+		catch (Exception^ komunikat)
+		{
+			MessageBox::Show(komunikat->Message);
+		}
+		//siatka->Columns[0]->Visible = false;
+
+
+
+		update_przycisk();
 		id_aktualnego_rekordu_pd = Convert::ToInt32(gdPrace->Rows[e->RowIndex]->Cells[0]->Value);
 	}
 private: System::Void dgAKTUALNYPLIK_CellContentClick(System::Object^  sender, System::Windows::Forms::DataGridViewCellEventArgs^  e) {
