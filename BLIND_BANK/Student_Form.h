@@ -805,10 +805,12 @@ namespace BLINDBANK {
 					// wstaw do bazy danych
 
 					if (button2->Text == "Wyœlij") {
-						polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", " + " \"" + _nazwapd + "\", \"" + _fromFile + "\")";
+						//polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", " + " \"" + _nazwapd + "\", \"" + _fromFile + "\")";
+						polecenie->CommandText = "insert into `pliki` values ( NULL, " + _id + "," + _idpd + ", '" + _nazwapd + "', '" + _fromFile + "', 0)";
 					}
 					else {
-						polecenie->CommandText = "update `pliki` set `plik` = \"" + _fromFile + "\" where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
+						//polecenie->CommandText = "update `pliki` set `plik` = \"" + _fromFile + "\" where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
+						polecenie->CommandText = "update `pliki` set `plik` = '" + _fromFile + "' where id_osoby = '" + _id + "' and id_pd = '" + _idpd + "';";
 					}
 
 					polecenie->ExecuteNonQuery();
