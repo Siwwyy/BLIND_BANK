@@ -398,12 +398,29 @@ namespace BLINDBANK {
 		}
 		else
 		{
+			//Dodaj losow¹ tabele
+			{
+				MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+				MySqlCommand^ polecenie = laczbaze->CreateCommand();
+				MySqlTransaction^ transakcja;
+
+				laczbaze->Open();
+				transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+				polecenie->Connection = laczbaze;
+				polecenie->Transaction = transakcja;
+
+				polecenie->CommandText = "CREATE TABLE uz ( pk INT )";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+			}
+			//Zrób selecta
 			{
 
 					MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
 					//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika as Imie, Nazwisko_Uzytkownika as Nazwisko , Unique_Index_Number as Numer Indexu, Email_Uzytkownika as E-mail, Haslo_Uzytkownika as Haslo, rola_idrola as Rola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
 					//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika, Nazwisko_Uzytkownika, Unique_Index_Number, Email_Uzytkownika, Haslo_Uzytkownika , rola_idrola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
-					MySqlCommand^ zapytanie = gcnew MySqlCommand("SHOW TABLES LIKE 'uzytkownicy';", laczbaze);
+					MySqlCommand^ zapytanie = gcnew MySqlCommand("SHOW TABLES LIKE 'uz%';", laczbaze);
 
 						MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
 						moja->SelectCommand = zapytanie;
@@ -417,7 +434,23 @@ namespace BLINDBANK {
 
 						laczbaze->Close();
 				}
-			if (dgtmp->RowCount<=1)
+			//Usun
+			{
+				MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+				MySqlCommand^ polecenie = laczbaze->CreateCommand();
+				MySqlTransaction^ transakcja;
+
+				laczbaze->Open();
+				transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+				polecenie->Connection = laczbaze;
+				polecenie->Transaction = transakcja;
+
+				polecenie->CommandText = "DROP TABLE uz";
+				polecenie->ExecuteNonQuery();
+				transakcja->Commit();
+			}
+			if (dgtmp->RowCount<=2)
 			{
 					_FTP f("createdb.sql");
 					String^ create_db = "";

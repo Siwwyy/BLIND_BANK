@@ -751,10 +751,10 @@ namespace BLINDBANK {
 
 		private: void pokaz_grupy(System::Windows::Forms::DataGridView^ siatka)
 		{
-			std::string id = std::to_string(_id);
+			//std::string id = std::to_string(_id);
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(konfiguracja);
 			//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM `uzytkownicy`;", laczbaze);
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT distinct `idgrupy` as `ID Grupy` from `grupy_uzytkownikow` where `iduzytkownika` ='"+_id+"';", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT * FROM grupy WHERE idgrupy in (SELECT idgrupy from grupy_uzytkownikow WHERE iduzytkownika = '"+_id+"');", laczbaze);
 
 			try {
 
@@ -775,7 +775,8 @@ namespace BLINDBANK {
 			{
 				MessageBox::Show(komunikat->Message);
 			}
-			//siatka->Columns[0]->Visible = false;
+			siatka->Columns[0]->Visible = false;
+
 		}
 
 

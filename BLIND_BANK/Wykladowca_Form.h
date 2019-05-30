@@ -159,6 +159,7 @@ namespace BLINDBANK {
 		cliext::vector<String^> nazwapliku;
 		cliext::vector<String^> calyplik;
 		String^ nazwa;
+		int pdidgrupy;
 
 
 	private: System::Windows::Forms::DateTimePicker^  dateTimePicker1;
@@ -1138,12 +1139,13 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 				nazwa = Convert::ToString(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[4]->Value);
 				id_rekordu = Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[0]->Value);
 			
+				pdidgrupy = Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[1]->Value);
 
 			lbCONTENTC->Text = Convert::ToString(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[5]->Value);
 			lbTITLEC->Text = Convert::ToString(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[4]->Value);
 
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
-			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT iduzytkownicy, Imie_Uzytkownika as 'Imie', Nazwisko_Uzytkownika as 'Nazwisko', ocena as 'Ocena' FROM uzytkownicy, Ocena, praca_domowa WHERE Ocena.id_pd ='"+id_rekordu+"' and praca_domowa.id_grupy = '" + Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[1]->Value) + "' and uzytkownicy.iduzytkownicy != " + id_wykladowca + " and Ocena.id_osoby = iduzytkownicy and Ocena.id_pd = praca_domowa.pk;", laczbaze);
+			MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT iduzytkownicy, Imie_Uzytkownika as 'Imie', Nazwisko_Uzytkownika as 'Nazwisko', ocena as 'Ocena' FROM uzytkownicy, Ocena, praca_domowa WHERE Ocena.id_pd ='"+id_rekordu+"' and praca_domowa.id_grupy = '" + pdidgrupy + "' and uzytkownicy.iduzytkownicy != " + id_wykladowca + " and Ocena.id_osoby = iduzytkownicy and Ocena.id_pd = praca_domowa.pk;", laczbaze);
 
 			MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
 			moja->SelectCommand = zapytanie;
@@ -1203,29 +1205,29 @@ private: System::Void btnSubmitOcena_Click(System::Object^  sender, System::Even
 	{
 		if (id_osoby > -1)
 		{
-			float ocena;
+			String^ ocena;
 			switch (Convert::ToInt32(boxOcena->SelectedIndex))
 			{
 			case 0:
-				ocena = 5.f;
+				ocena = "5";
 				break;
 			case 1:
-				ocena = 4.5f;
+				ocena = "4.5";
 				break;
 			case 2:
-				ocena = 4.f;
+				ocena = "4";
 				break;
 			case 3:
-				ocena = 3.5f;
+				ocena = "3.5";
 				break;
 			case 4:
-				ocena = 3.f;
+				ocena = "3";
 				break;
 			case 5:
-				ocena = 2.5f;
+				ocena = "2.5";
 				break;
 			case 6:
-				ocena = 2.f;
+				ocena = "2";
 				break;
 			}
 			//MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
@@ -1245,6 +1247,24 @@ private: System::Void btnSubmitOcena_Click(System::Object^  sender, System::Even
 			transakcja->Commit();
 			MessageBox::Show("Wystawiono ocene", "Komunikat", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
+			{
+				MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+				MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT iduzytkownicy, Imie_Uzytkownika as 'Imie', Nazwisko_Uzytkownika as 'Nazwisko', ocena as 'Ocena' FROM uzytkownicy, Ocena, praca_domowa WHERE Ocena.id_pd ='" + id_rekordu + "' and praca_domowa.id_grupy = '" + pdidgrupy + "' and uzytkownicy.iduzytkownicy != " + id_wykladowca + " and Ocena.id_osoby = iduzytkownicy and Ocena.id_pd = praca_domowa.pk;", laczbaze);
+
+				MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+				moja->SelectCommand = zapytanie;
+
+				DataTable^ tabela = gcnew DataTable();
+				moja->Fill(tabela);
+
+				BindingSource^ zrodlo = gcnew BindingSource();
+				zrodlo->DataSource = tabela;
+				dgPOKAZPRACE->DataSource = zrodlo;
+				taczable = false;
+				dgPOKAZPRACE->Columns[0]->Visible = false;
+				//id_osoby = Convert::ToInt32(dgPOKAZPRACE->Rows[e->RowIndex]->Cells[0]->Value);
+				laczbaze->Close();
+			}
 			//transakcja->Cl
 		}
 	}
