@@ -888,7 +888,7 @@ private: System::Void gdPrace_CellContentClick(System::Object^  sender, System::
 		DataTable^ tabela = gcnew DataTable();
 		moja->Fill(tabela);
 
-		MessageBox::Show(Convert::ToString(tabela->Rows->Count));
+		//MessageBox::Show(Convert::ToString(tabela->Rows->Count));
 
 		
 

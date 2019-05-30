@@ -68,6 +68,7 @@ namespace BLINDBANK {
 	private: System::Windows::Forms::Label^  label5;
 	private: System::Windows::Forms::TextBox^  txtNOWEHASLO;
 	private: System::Windows::Forms::Button^  btnZMIENHASLO;
+	private: System::Windows::Forms::DataGridView^  dgtmp;
 
 
 
@@ -114,9 +115,11 @@ namespace BLINDBANK {
 			this->txtEMAIL = (gcnew System::Windows::Forms::TextBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->btnZMIENHASLO = (gcnew System::Windows::Forms::Button());
+			this->dgtmp = (gcnew System::Windows::Forms::DataGridView());
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->tabPage2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgtmp))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// tabControl1
@@ -132,6 +135,7 @@ namespace BLINDBANK {
 			// tabPage1
 			// 
 			this->tabPage1->BackColor = System::Drawing::SystemColors::Highlight;
+			this->tabPage1->Controls->Add(this->dgtmp);
 			this->tabPage1->Controls->Add(this->label2);
 			this->tabPage1->Controls->Add(this->label1);
 			this->tabPage1->Controls->Add(this->txtHaslo);
@@ -337,6 +341,16 @@ namespace BLINDBANK {
 			this->btnZMIENHASLO->UseVisualStyleBackColor = true;
 			this->btnZMIENHASLO->Click += gcnew System::EventHandler(this, &Logowanie::btnZMIENHASLO_Click);
 			// 
+			// dgtmp
+			// 
+			this->dgtmp->BackgroundColor = System::Drawing::SystemColors::Highlight;
+			this->dgtmp->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgtmp->Location = System::Drawing::Point(534, 18);
+			this->dgtmp->Name = L"dgtmp";
+			this->dgtmp->RowTemplate->Height = 24;
+			this->dgtmp->Size = System::Drawing::Size(10, 10);
+			this->dgtmp->TabIndex = 12;
+			// 
 			// Logowanie
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -355,6 +369,7 @@ namespace BLINDBANK {
 			this->tabPage1->PerformLayout();
 			this->tabPage2->ResumeLayout(false);
 			this->tabPage2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgtmp))->EndInit();
 			this->ResumeLayout(false);
 
 		}
@@ -383,31 +398,55 @@ namespace BLINDBANK {
 		}
 		else
 		{
-			//if (_FTP::read_configure_string("DB_CONNECTION2.txt", 0) != "1")
-			//{
-			//	_FTP::write_to_file_DB("DB_CONNECTION2.txt");
+			{
 
-			//	_FTP f("createdb.sql");
-			//	String^ create_db = "";
-			//	f.read_file_n(create_db);
-			//	//Here add mysql reader
-			//	{
-			//		MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
-			//		MySqlCommand^ polecenie = laczbaze->CreateCommand();
-			//		MySqlTransaction^ transakcja;
+					MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+					//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika as Imie, Nazwisko_Uzytkownika as Nazwisko , Unique_Index_Number as Numer Indexu, Email_Uzytkownika as E-mail, Haslo_Uzytkownika as Haslo, rola_idrola as Rola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
+					//MySqlCommand^ zapytanie = gcnew MySqlCommand("SELECT Imie_Uzytkownika, Nazwisko_Uzytkownika, Unique_Index_Number, Email_Uzytkownika, Haslo_Uzytkownika , rola_idrola FROM blind_bank_db.uzytkownicy ORDER BY iduzytkownicy;", laczbaze);
+					MySqlCommand^ zapytanie = gcnew MySqlCommand("SHOW TABLES LIKE 'uzytkownicy';", laczbaze);
 
-			//		laczbaze->Open();
-			//		transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+					try {
 
-			//		polecenie->Connection = laczbaze;
-			//		polecenie->Transaction = transakcja;
-			//		polecenie->CommandText = create_db;
-			//		polecenie->ExecuteNonQuery();
-			//		transakcja->Commit();
+						MySqlDataAdapter^ moja = gcnew MySqlDataAdapter();
+						moja->SelectCommand = zapytanie;
 
-			//		
-			//	}
-			//}
+						DataTable^ tabela = gcnew DataTable();
+						moja->Fill(tabela);
+
+						BindingSource^ zrodlo = gcnew BindingSource();
+						zrodlo->DataSource = tabela;
+						dgtmp->DataSource = zrodlo;
+
+						laczbaze->Close();
+					}
+					catch (Exception^ komunikat)
+					{
+						MessageBox::Show(komunikat->Message);
+					}
+				}
+			if (dgtmp->RowCount<=1)
+			{
+					_FTP f("createdb.sql");
+					String^ create_db = "";
+					f.read_file_n(create_db);
+					//Here add mysql reader
+					{
+						MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());
+						MySqlCommand^ polecenie = laczbaze->CreateCommand();
+						MySqlTransaction^ transakcja;
+
+						laczbaze->Open();
+						transakcja = laczbaze->BeginTransaction(IsolationLevel::ReadCommitted);
+
+						polecenie->Connection = laczbaze;
+						polecenie->Transaction = transakcja;
+						polecenie->CommandText = create_db;
+						polecenie->ExecuteNonQuery();
+						transakcja->Commit();
+
+
+					}
+			}
 			
 
 			MySqlConnection^ laczbaze = gcnew MySqlConnection(SQL_CONFIGURATION::get_konfiguracja());

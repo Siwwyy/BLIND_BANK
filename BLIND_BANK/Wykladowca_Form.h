@@ -1300,7 +1300,7 @@ private: System::Void btnUsun_Click(System::Object^  sender, System::EventArgs^ 
 			polecenie->CommandText = "DELETE FROM praca_domowa WHERE pk = '" + id_rekordu + "'";
 			polecenie->ExecuteNonQuery();
 			transakcja->Commit();
-			MessageBox::Show("Usunieto grupe", "Komunikat", MessageBoxButtons::OK, MessageBoxIcon::Information);
+			MessageBox::Show("Usunieto prace", "Komunikat", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			btnPOKAZPRACE_Click(nullptr,nullptr);
 		}
 	}
