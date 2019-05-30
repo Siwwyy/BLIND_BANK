@@ -410,7 +410,7 @@ namespace BLINDBANK {
 				polecenie->Connection = laczbaze;
 				polecenie->Transaction = transakcja;
 
-				polecenie->CommandText = "CREATE TABLE uz ( pk INT )";
+				polecenie->CommandText = "CREATE TABLE uzy ( pk INT )";
 				polecenie->ExecuteNonQuery();
 				transakcja->Commit();
 			}
@@ -446,7 +446,7 @@ namespace BLINDBANK {
 				polecenie->Connection = laczbaze;
 				polecenie->Transaction = transakcja;
 
-				polecenie->CommandText = "DROP TABLE uz";
+				polecenie->CommandText = "DROP TABLE uzy";
 				polecenie->ExecuteNonQuery();
 				transakcja->Commit();
 			}
