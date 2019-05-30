@@ -140,9 +140,16 @@ namespace BLINDBANK {
 			{
 				//system("cd Prace_Domowe");
 				//String^ file = "[targetdir]/"+number+file_path->Remove((file_path->Length - 2), 2);
-				String^ file = "Prace_Domowe/"+number+file_path->Remove((file_path->Length - 2), 2);
+				SaveFileDialog^ hehe = gcnew SaveFileDialog();
+				hehe->ShowDialog();
+				//System::String^ file_name = hehe->InitialDirectory + hehe->FileName;
+				System::String^ file_name = hehe->InitialDirectory + hehe->FileName;
+				//System::String^ file_name = hehe->InitialDirectory + file_path->Remove((file_path->Length - 2), 2);
+				//String^ file = "Prace_Domowe/"+number+file_path->Remove((file_path->Length - 2), 2);
+				//String^ file = file_name+number+file_path->Remove((file_path->Length - 2), 2);
+				//String^ file = file_name+number+file_path->Remove((file_path->Length - 2), 2);
 				//String^ file = number+file_path->Remove((file_path->Length - 2), 2);
-				StreamWriter^ writer = gcnew StreamWriter(file);
+				StreamWriter^ writer = gcnew StreamWriter(file_name);
 				for (size_t i = 0; i < to_file->Length; ++i)
 				{
 					if (to_file[i] == '{' || to_file[i] == '}')
